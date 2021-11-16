@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Rubik';
+}
+
+body{
+    display: grid;
+    grid-template-rows: 3fr 3fr 3fr;
+    height: 100vh;
+    background:linear-gradient(50deg, purple, blue,green, yellow, orange, red, orange, yellow,green, blue, purple, red);  
+}
+
+header{
+    height: 33vh;
+    width: 0vw;
+    background-color: rgba(214,2,112,255);
+    display: grid;
+    place-items: end;
+    border-top-right-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+    transition: all 0.7s ease-in-out;
+}
+
+main{
+    height: 33vh;
+    width: 0vw;
+    background-color: rgba(155,79,150,255);
+    display: grid;
+    place-items: end;
+    border-top-right-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+    transition: all 0.7s ease-in-out;
+}
+
+footer{
+    height: 33vh;
+    width: 0vw;
+    background-color: rgba(0,56,168,255);
+    display: grid;
+    place-items: end;
+    border-top-right-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+    transition: all 0.7s ease-in-out;
+}
+
+#timer{
+    color: white;
+    padding: 0.7rem;
+    font-size: 2rem;
+    
+}
+#min{
+    color: white;
+    padding: 0.7rem;
+    font-size: 2rem;
+    
+}
+#sek{
+    color: white;
+    padding: 0.7rem;
+    font-size: 2rem;
+
+}

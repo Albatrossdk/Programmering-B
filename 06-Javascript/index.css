@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap');
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Montserrat;
+}
+
+body{
+    display: grid;
+    grid-template-rows: 1fr 10fr 1rem;
+    height: 100vh;
+}
+
+#button{
+    color: white;
+    border: 1px solid white;
+    padding: 1rem;
+    cursor: pointer;
+    transition:all .3s ease-in-out;
+}
+
+#button:hover{
+    transform:scale(1.1);
+    border-radius: 2rem;
+}
+
+header{
+    background-color: rgba(13,42,81,255);
+    display: grid;
+    place-items: center;
+}
+
+main{
+    background-image: url('./assets/1.jpg');
+    background-size: cover;
+    display: grid;
+    place-items: center;
+    transition:1s ease-in-out;
+    background-position: bottom left;
+}
+
+#tid{
+    border-radius: 0;
+    font-size: 4rem;
+    border: .3rem solid white;
+    padding: 2rem;
+    height: 20vh;
+    width: 20vh;
+    display: grid;
+    place-items: center;
+    transition: .4s all ease-in-out;
+    color: white;
+}
+
+
+footer{
+    background-color: lightpink;
+    transition: 1s all ease-in-out;
+    border-top-right-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+}

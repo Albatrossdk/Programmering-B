@@ -1,0 +1,17 @@
+main{
+    display: grid;
+    place-items: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap:.1rem;
+}
+
+.card{
+    width:100%;
+    padding:2rem;
+    animation:1s anim ease-in-out;
+}
+
+@keyframes{
+    from
+}

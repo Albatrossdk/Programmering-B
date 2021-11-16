@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap');
+
+* {
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: Lato;
+  }
+  
+  
+body{
+    width:100vw;
+    height:100vh;
+    display:grid;
+    grid-template-rows: 1fr 6fr 1fr;
+    background-image: url('./assets/5.jpg');
+    background-size: cover;
+  }
+
+header{
+    background-color: white;
+    display: grid;
+    padding: 2rem;
+    gap: 2rem;
+    grid-template-columns: repeat(4, 1fr);
+    place-items: center;
+
+  }
+
+main{
+    background-color: rgb(238, 238, 238, .4);
+    display:grid;
+    grid-auto-flow:column;
+    overflow: scroll;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+    color: white;
+ }
+
+footer{
+    background-color: rgb(255, 218, 224);
+    display: grid;
+    place-items: center;
+
+ }
+
+
+.page{
+    width:100vw;
+    display:grid;
+    place-items: center;
+    scroll-snap-align: center;
+}
+
+
+
+
+
+
+
+
+
+

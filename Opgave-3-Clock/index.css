@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Rubik';
+}
+
+/* Vil forsøge mig med nogle css animationer */
+
+@keyframes DrejThomas {
+    from{
+        transform: rotate(0deg);
+    }
+    50%{
+        transform: rotate(-30deg)
+    }
+    to{
+        transform: rotate(360deg);
+    }
+}
+
+#thomas{
+    height: 15vh;
+    width: 15vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 50%;
+    transition: all .4s linear;
+    animation: DrejThomas 2s;
+    animation-iteration-count: infinite;
+}
+
+body{
+    display: grid;
+    grid-template-rows: 2fr 10fr 1.5rem;
+    height: 100vh;
+}
+
+main{
+    display: grid;
+    place-items: center;
+    background-size: cover;
+    background-position: bottom;
+    background-image: url('./assets/2.jpg');
+}
+
+#ur{
+    display: grid;
+    grid-auto-flow: column;
+    place-items: center;
+    font-size: 15vh;
+    color: white;
+}
+
+#ur div:nth-of-type(2){
+    margin-bottom: 4vh;
+}
+#ur div:nth-of-type(4){
+    margin-bottom: 4vh;
+}
+
+header{
+    background-color: rgba(86,132,141,255);
+    display: grid;
+    align-items: center;
+    overflow: hidden;
+}
+
+footer{
+    display: grid;
+    place-items: center;
+    background-color: lightcyan;
+}
+
