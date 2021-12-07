@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Rubik';
+}
+
+main{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(200px, 1fr));
+    padding:2rem;
+    background-color: pink;
+    gap: 1rem;
+    }
+    .door{
+    background-color:white;
+    background-size:cover;
+    position:relative;
+    }
+    
+    .locker{
+    top:0;
+    left:0;
+    height:100%;
+    width:100%;
+    position:absolute;
+    background-color:white;
+    display:grid;
+    place-items: center;
+    font-size:4rem;
+    z-index:5;
+    }
+
+
+@keyframes slide {
+    from{ 
+        width:100%; 
+        }
+    to{
+        width:0;
+    }
+}
+
+.header{
+    background-color: pink;
+}

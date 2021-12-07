@@ -1,11 +1,10 @@
 let api_key = 'YfoA26GBT44kI0D0XCyRx5Hc52kYYhH6'
 
 
-fetch('https://api.giphy.com/v1/gifs/trending?api_key=' + api_key)
+fetch('https://api.giphy.com/v1/gifs/trending?api_key=' + api_key + '&limit=20&rating=pg-13')
     .then( response => response.json() )
     .then( json => {
-        console.log(json.data[0].images.fixed_height.url)
-        insertImage(json.data[30].images.fixed_height.url)
+        json.data.map( image => insertImage(image.images.fixed_width.url) )
     } )
 
 
