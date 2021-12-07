@@ -22,7 +22,7 @@
             "height": "200px",
             "content": "image",
             "url": "./assets/3.jpg",
-            "animation": "slide"
+            "animation": "dooropen"
         },
         {
             "date":4,

@@ -42,6 +42,24 @@ fetch('./kaldata.json')
                 break
         }
 
+
+        lock.addEventListener("click",()=>{
+          switch(door.animation){
+            case 'slide':
+              lock.innerHTML = ''
+              lock.classList.add('slideanim')
+            break
+            case 'spin':
+              lock.innerHTML = ''
+              lock.classList.add('spinanim')
+            break
+            case 'dooropen':
+              lock.innerHTML = ''
+              lock.classList.add('dooropen')
+              break
+          }
+        })
+
         div.append(lock)
         document.querySelector('main').append(div)
 
@@ -51,19 +69,31 @@ fetch('./kaldata.json')
 })
 
 const setImage = (div, obj) => {
-div.style.backgroundImage = `url('${obj.url}')`
+  div.style.backgroundImage = `url('${obj.url}')`
 }
 
 const setYoutube = (div, obj) => {
-div.innerHTML = obj.embed
+  div.innerHTML = obj.embed
 }
 
-const setRedditApi = (div, obj) => {
+  const setRedditApi = (div, obj) => {
 
 }
 
 
-addEventListener(document.querySelector('locker'), onclick="ANImation")
+
+
+
+
+/*let succ = document.querySelector('.locker')
+locker.addEventListener("click", gateOpen)
+
+const gateOpen = () => {
+  console.log("hej")
+
+  //funktionen her for h
+
+}*/
 
 
 
