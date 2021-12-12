@@ -55,7 +55,7 @@ fetch('./kaldata.json')
             break
             case 'dooropen':
               lock.innerHTML = ''
-              lock.classList.add('dooropen')
+              lock.classList.toggle('dooropen')
               break
           }
         })
@@ -76,9 +76,13 @@ const setYoutube = (div, obj) => {
   div.innerHTML = obj.embed
 }
 
-  const setRedditApi = (div, obj) => {
-
-}
+/*const setRedditApi = (div, obj) => {
+  fetch('https://www.reddit.com/r/nekoboys/hot.json')
+  .then( resred => resred.json() )
+  .then(json =>{
+    div.style.backgroundImage = data.url_overridden_by_dest
+  }
+}*/
 
 
 

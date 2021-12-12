@@ -31,6 +31,7 @@ main{
     place-items: center;
     font-size:4rem;
     z-index:5;
+    transition: all 0.5s ease-in-out;
     }
 
 
@@ -47,13 +48,22 @@ main{
     animation: slide 3s forwards ease-in-out;
 }
 
+@keyframes spinanim {
+    from{
+        transform: translateX(200px);
+    }
+    to{
+        transform: translateX(0px);
+    }
+}
+
 .spinanim{
 
 }
 
 .dooropen{
     transform-origin: left;
-    transition: 3s;
+    /*transition: all 3s;*/
     /*animation: 3s forwards ease-in-out;*/
     transform: perspective(1200px) translateZ(0px) translateX(0px) translateY(0px) rotateY(-105deg);
     background-color: powderblue;
