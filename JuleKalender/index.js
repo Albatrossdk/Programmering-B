@@ -76,40 +76,15 @@ const setYoutube = (div, obj) => {
   div.innerHTML = obj.embed
 }
 
-/*const setRedditApi = (div, obj) => {
-  fetch('https://www.reddit.com/r/nekoboys/hot.json')
-  .then( resred => resred.json() )
-  .then(json =>{
-    div.style.backgroundImage = data.url_overridden_by_dest
-  }
-}*/
 
-
-
-
-
-
-/*let succ = document.querySelector('.locker')
-locker.addEventListener("click", gateOpen)
-
-const gateOpen = () => {
-  console.log("hej")
-
-  //funktionen her for h
-
-}*/
-
-
-
-
-
-fetch('https://www.reddit.com/r/javascript/hot.json')
-  .then(function(res) {
-    return res.json();   // Convert the data into JSON
+const setRedditApi = (div, obj) => {
+  console.log(div, obj)
+  fetch(obj.url)
+  .then( resred => resred.json())
+  .then(json => {
+    let img = json[0].data.children[0].data.thumbnail
+    div.style.backgroundImage = "url('" + img + "')"
   })
-  .then(function(data) {
-    console.log(data);   // Logs the data to the console
-  })
-  .catch(function(err) {
-    console.log(err);   // Log error if any
-  });
+}
+
+

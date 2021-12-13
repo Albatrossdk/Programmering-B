@@ -28,8 +28,8 @@
             "date":4,
             "width": "200px",
             "height": "200px",
-            "content": "image",
-            "url": "./assets/2.jpg",
+            "content": "redditapi",
+            "url": "https://www.reddit.com/r/dankmemes/comments/rf1vez/_/.json",
             "animation": "slide"
         },
         {
