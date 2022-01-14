@@ -95,11 +95,12 @@ function draw(){
 
     if ((mouseX > 0) && (mouseX < 270) &&
     (mouseY > 0) && (mouseY < 60)) {
-        print("you're in the gui")
+        print("material gourl")
         //sæt opcaity til nul her eller noget er for træt
     } else {
         
     }
+
 
     
 }
