@@ -4,12 +4,13 @@ let friction = 0.99
 let velocity = 0
 let jump = 20
 let rectX, rectY, rectW, rectH
-let rectSpeed = 12
+let rectSpeed = 16
 let score = 0
 let randomizer = 50
 let lives = 10
 let once = true
 let fr = 60
+let offset
 
 function setup(){
     createCanvas(windowWidth, windowHeight)
@@ -19,25 +20,27 @@ function setup(){
     x = windowWidth/2
     y = diameter/2
     rectW = 60
-    rectH = 200
+    rectH = 250 
     rectX = windowWidth - rectW
     rectY = windowHeight - rectH
     lives = 10
+    offset = 60
 }
 
 function showRect(){
     fill('lightgreen')
-    rect(rectX,rectY,rectW,rectH)
-    rect(rectX,0,rectW,rectH)
+    rect(rectX,rectY - offset,rectW,rectH + offset)
+    rect(rectX,0,rectW,rectH - offset)
 }
 
 function updateRect(){
     rectX -= rectSpeed
     if(rectX <= 0 - rectW){
         rectX = windowWidth
-        rectH = random(200, 300)
+        //rectH = random(200, 300)
         rectY = windowHeight - rectH
         once = true
+        offset = random(-200, 200)
     }
     if(rectX == windowWidth/2){
         score++
@@ -57,7 +60,7 @@ function update(){
     if(y > windowHeight - diameter/2){
         y = windowHeight - diameter/2
         velocity = -velocity
-        if(!alert('You touched the ground, YOU LOST!')){window.location.reload();}
+        if(!alert('You smashed into the ground, YOU LOST!')){window.location.reload();}
     }
     if(y < 0){
         y = windowHeight/2
@@ -73,7 +76,7 @@ function draw(){
     update()   
     showRect()
     updateRect()
-    select('#info').html(round(lives))
+    select('#info').html('Lives: ' + lives + '<br>' + ' Score: ' + score)
     collision()
     //console.log(frameCount)
     frameincreaser()    
@@ -88,16 +91,20 @@ function keyPressed(key){
 
 function collision(){
     if(((x > rectX) && (x < rectX + rectW) &&
-    (y > rectY) && (y < rectY + rectH) && (once))){
+    (y > rectY - offset) && (y < rectY + rectH + offset) && (once))){
         //if(!alert('You lost')){window.location.reload();}     
         lives--
+        score--
         once = false    
+        console.log('bund')
     }
     if(((x > rectX) && (x < rectX + rectW) &&
-    (y > 0) && (y < 0 + rectH) && (once))){
+    (y > 0) && (y < 0 + rectH - offset) && (once))){
         //if(!alert('You lost')){window.location.reload();}
         lives--
+        score--
         once = false
+        console.log('top')
     }
     //else(once = true)
 
