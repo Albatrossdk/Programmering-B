@@ -4,11 +4,12 @@ let friction = 0.99
 let velocity = 0
 let jump = 20
 let rectX, rectY, rectW, rectH
-let rectSpeed = 16
+let rectSpeed = 13
 let score = 0
 let randomizer = 50
 let lives = 10
 let once = true
+let once2 = true
 let fr = 60
 let offset
 
@@ -40,11 +41,16 @@ function updateRect(){
         //rectH = random(200, 300)
         rectY = windowHeight - rectH
         once = true
+        once2 = true
         offset = random(-200, 200)
     }
-    if(rectX == windowWidth/2){
+    /*if(rectX == windowWidth/2){
         score++
-    }
+    }*/
+    if (rectX > windowWidth/2 - rectW/2 && rectX < windowWidth/2 + rectW/2 && once2) {
+        score++
+        once2 = false
+      }
 }
 
 function show(){
@@ -79,7 +85,7 @@ function draw(){
     select('#info').html('Lives: ' + lives + '<br>' + ' Score: ' + score)
     collision()
     //console.log(frameCount)
-    frameincreaser()    
+    speedIncreaser()    
 }
 
 function keyPressed(key){
@@ -117,10 +123,18 @@ function collision(){
 
 }
 
-function frameincreaser(){
+function speedIncreaser(){
+    if(frameCount % 500 == 0){
+        rectSpeed = rectSpeed + 0.5
+        console.log('material gourl')
+        console.log(round(rectSpeed, 3))
+    }
+}
+
+/*function frameincreaser(){
     /*if(frameCount % 1000 == 0){
         frameRate(fr++)
         console.log('material gourl')
         console.log(fr)
-    }*/
-}
+    }
+}*/
