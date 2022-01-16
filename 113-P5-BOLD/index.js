@@ -128,6 +128,10 @@ function speedIncreaser(){
         rectSpeed = rectSpeed + 0.5
         console.log('material gourl')
         console.log(round(rectSpeed, 3))
+        select('#speed').style('opacity','1')
+    }
+    if(frameCount % 550 == 0){
+        select('#speed').style('opacity','0')
     }
 }
 

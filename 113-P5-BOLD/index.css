@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 
 *{
     margin: 0;
@@ -25,4 +26,26 @@ canvas{
     color: white;
     right: 2rem;
     bottom: 2rem;
+}
+
+#speed{
+    font-family: 'Bebas Neue', cursive;
+    transition: ease-in .125s;
+    transition: ease-out .7s;
+
+    position: fixed;
+    width: 253px;
+    /*height: 200px;*/
+    left: 50%;
+    top: 5%;
+    /*margin-top: -100px;*/
+    margin-left: -126.5px;
+
+    display: grid;
+    align-items: center;
+    font-size: 5rem;
+    z-index: 5;
+    color: red;
+    opacity: 0;
+
 }
