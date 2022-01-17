@@ -28,6 +28,18 @@ canvas{
     bottom: 2rem;
 }
 
+#highscore{
+    position: fixed;
+    z-index: 5;
+    color: white;
+    right: 2rem;
+    bottom: 90%;
+    /*
+    left: 85%;
+    top: 3%;
+    */
+}
+
 #speed{
     font-family: 'Bebas Neue', cursive;
     transition: ease-in .125s;
