@@ -134,18 +134,6 @@ function collision(){
 
 }
 
-function speedIncreaser(){
-    if(frameCount % 500 == 0){
-        rectSpeed = rectSpeed + 0.5
-        console.log('material gourl')
-        console.log('Speed: '+round(rectSpeed, 3))
-        select('#speed').style('opacity','1')
-    }
-    if(frameCount % 550 == 0){
-        select('#speed').style('opacity','0')
-    }
-}
-
 function setHighScore(){
     select('#highscore').html('Highscore: ' + localStorage.highscore)
     if(highscore !== null){
@@ -158,10 +146,14 @@ function setHighScore(){
     }
 }
 
-/*function frameincreaser(){
-    /*if(frameCount % 1000 == 0){
-        frameRate(fr++)
+function speedIncreaser(){
+    if(frameCount % 500 == 0){
+        rectSpeed = rectSpeed + 0.5
         console.log('material gourl')
-        console.log(fr)
+        console.log('Speed: '+round(rectSpeed, 3))
+        select('#speed').style('opacity','1')
     }
-}*/
+    if(frameCount % 550 == 0){
+        select('#speed').style('opacity','0')
+    }
+}
