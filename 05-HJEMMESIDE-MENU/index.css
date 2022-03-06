@@ -11,7 +11,7 @@ body{
     height: 100vh;
     width: 100vw;
     display: grid;
-    grid-template-rows: 1fr 6fr 1fr;
+    grid-template-rows: 1fr 10fr 1fr;
     background-image: url('./assets/1.jpg');
     background-size: cover;
     overflow: hidden;
@@ -55,12 +55,14 @@ main{
 .page{
     width: 100vw;
     display: grid;
-    place-items: center;
+    /*place-items: center;*/
     scroll-snap-align: center;
 }
 
 .page div{
-    width: 10vw;
+    padding-left: 5rem;
+    padding-top: 5rem;
+    /*width: 10vw;*/
 }
 
 footer{
