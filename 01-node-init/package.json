@@ -1,0 +1,20 @@
+{
+  "name": "01-node-init",
+  "version": "1.0.0",
+  "description": "We are the testing the basic feature of node.js",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "nodejs",
+    "programming",
+    "cum",
+    "highschool"
+  ],
+  "author": "Bjørn Leifer",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.3"
+  }
+}

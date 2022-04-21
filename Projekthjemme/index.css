@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Open+Sans:wght@300&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
+}
+
+body{
+    background-color: rgb(50,58,86);
+    width: 100vw;
+}
+
+header{
+    height: 10rem;
+    display: grid;
+    grid-template-rows: 2fr 1fr;
+    padding: 1rem;
+    padding-bottom: 0rem;
+    padding-left: 6rem;
+    padding-right: 6rem;
+
+    background-color: rgb(50,58,86);
+    border-bottom: 2px solid white;
+}
+
+.top{
+}
+
+.bottom{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 5fr;
+    place-items: center;
+}
+
+main{
+    height: 50rem;
+    background-color: rgb(50,58,86);
+    padding-left: 6rem;
+    padding-right: 6rem;
+
+}
+
+footer{
+    font-size: 0.7rem;
+    color: white;
+    display: grid;
+    place-items: center;
+    height: 2rem;
+    background-color: rgb(84,93,119);
+
+}
+
+.side{
+    color: white;
+
+}
+
+.logo{
+    padding-left: 2.5rem;
+    position: absolute;
+}
+
+.dropdown{
+    padding-left: 70vw;
+    position: absolute;
+}
