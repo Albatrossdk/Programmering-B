@@ -49,6 +49,8 @@ fetch('./data/event.json')
         card.classList.add('card')
         synonyms.classList.add('synonyms')
 
+        
+
         heading.innerHTML = events.name
         synonyms.innerHTML = events.synonyms
         synonyms.innerHTML = events.qualities
