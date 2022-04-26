@@ -10,7 +10,7 @@
             "renlighed": "30",
             "mennesker": "20",
             "livredder": "ja",
-            "vand-api-id": 2
+            "api-id": 2
 
         },
         {
@@ -21,7 +21,8 @@
             "toiletter": "ja",
             "renlighed": "50",
             "mennesker": "30",
-            "livredder": "ja"
+            "livredder": "ja",
+            "api-id": 40
         },
         {
             "name": "Islandsbrygge havnebad",
@@ -31,7 +32,8 @@
             "toiletter": "ja",
             "renlighed": "50",
             "mennesker": "50",
-            "livredder": "ja"
+            "livredder": "ja",
+            "api-id": 1
         },
         {
             "name": "Kalvebod Bølge",
@@ -41,7 +43,8 @@
             "toiletter": "ja",
             "renlighed": "70",
             "mennesker": "70",
-            "livredder": "nej"
+            "livredder": "nej",
+            "api-id": 161
         },
         {
             "name": "Amagerstrandpark",
@@ -51,7 +54,8 @@
             "toiletter": "ja",
             "renlighed": "80",
             "mennesker": "60",
-            "livredder": "ja"
+            "livredder": "ja",
+            "api-id": 3
         },
         {
             "name": "Valby strand",
@@ -61,7 +65,8 @@
             "toiletter": "ja",
             "renlighed": "50",
             "mennesker": "60",
-            "livredder": "ja"
+            "livredder": "ja",
+            "api-id": 164
         },
         {
             "name": "Svanemøllen strand",
@@ -71,7 +76,8 @@
             "toiletter": "ja",
             "renlighed": "50",
             "mennesker": "70",
-            "livredder": "ja"
+            "livredder": "ja",
+            "api-id": 6
         },
         {
             "name": "Badezone halvandet",
@@ -81,7 +87,8 @@
             "toiletter": "nej",
             "renlighed": "20",
             "mennesker": "30",
-            "livredder": "nej"
+            "livredder": "nej",
+            "api-id": 128
         }
     ]
 }
