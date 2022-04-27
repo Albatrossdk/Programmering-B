@@ -66,7 +66,7 @@ const newCard = (badesteder) => {
     indhold.child(indholdapi)
 
     //renlighed
-    let heading2 = createElement('h4', 'Badestedets snavsethed:')
+    let heading2 = createElement('h4', 'Badestedets renlighed:')
     let progressholder = createDiv('')
     let progress = createDiv('')
 
@@ -75,6 +75,15 @@ const newCard = (badesteder) => {
     progress.addClass('progress')
 
     progress.style('width', badesteder.renlighed+'%')
+
+    //color of progression
+    if((badesteder.renlighed > 0) && (badesteder.renlighed < 50)){
+        progress.style('background-color', 'green')
+    }else if((badesteder.renlighed > 50) && (badesteder.renlighed < 75)){
+        progress.style('background-color', 'orange')
+    }else if((badesteder.renlighed > 75) && (badesteder.renlighed < 100)){
+        progress.style('background-color', 'red')
+    }
     
     indholdinfo.child(heading2)
     progressholder.child(progress)
@@ -91,6 +100,15 @@ const newCard = (badesteder) => {
     progress1.addClass('progress')
 
     progress1.style('width', badesteder.mennesker+'%')
+
+    //color of progression
+    if((badesteder.mennesker > 0) && (badesteder.mennesker < 50)){
+        progress1.style('background-color', 'green')
+    }else if((badesteder.mennesker > 50) && (badesteder.mennesker < 75)){
+        progress1.style('background-color', 'orange')
+    }else if((badesteder.mennesker > 75) && (badesteder.mennesker < 100)){
+        progress1.style('background-color', 'red')
+    }
     
     indholdinfo.child(heading3)
     progressholder1.child(progress1)
@@ -134,6 +152,8 @@ const newCard = (badesteder) => {
 
     rating3.style('width', badesteder.rating*20+'%')
 
+    //Rating color change
+    
 
     //Livredder
     let livredder = createDiv('')
@@ -182,6 +202,7 @@ const newCard = (badesteder) => {
         console.log('found data: ', bData.data[0])
     }else{
         console.log('found no data')
+        location.reload()
     }
 
 
@@ -243,7 +264,7 @@ const newPopUp = (badesteder) => {
     indhold.child(indholdapi)
 
     //renlighed
-    let heading2 = createElement('h4', 'Badestedets snavsethed:')
+    let heading2 = createElement('h4', 'Badestedets renlighed:')
     let progressholder = createDiv('')
     let progress = createDiv('')
 
@@ -252,6 +273,15 @@ const newPopUp = (badesteder) => {
     progress.addClass('progress')
 
     progress.style('width', badesteder.renlighed+'%')
+
+        //color of progression
+        if((badesteder.renlighed > 0) && (badesteder.renlighed < 50)){
+            progress.style('background-color', 'green')
+        }else if((badesteder.renlighed > 50) && (badesteder.renlighed < 75)){
+            progress.style('background-color', 'orange')
+        }else if((badesteder.renlighed > 75) && (badesteder.renlighed < 100)){
+            progress.style('background-color', 'red')
+        }
     
     indholdinfo.child(heading2)
     progressholder.child(progress)
@@ -268,6 +298,15 @@ const newPopUp = (badesteder) => {
     progress1.addClass('progress')
 
     progress1.style('width', badesteder.mennesker+'%')
+
+        //color of progression
+        if((badesteder.mennesker > 0) && (badesteder.mennesker < 50)){
+            progress1.style('background-color', 'green')
+        }else if((badesteder.mennesker > 50) && (badesteder.mennesker < 75)){
+            progress1.style('background-color', 'orange')
+        }else if((badesteder.mennesker > 75) && (badesteder.mennesker < 100)){
+            progress1.style('background-color', 'red')
+        }
     
     indholdinfo.child(heading3)
     progressholder1.child(progress1)
@@ -350,11 +389,6 @@ const newPopUp = (badesteder) => {
 
     //Finds and logs json object of our cards id specified in json
     let bData = apidata.find( obj => obj.id == badesteder['api-id'])
-    if(bData){
-        console.log('found data: ', bData.data[0])
-    }else{
-        console.log('found no data')
-    }
 
 
     //Created heading for card
@@ -463,7 +497,7 @@ var output = document.getElementById("demo");
 
 
 /*
-Tror det her kode er irrelevant? Virker i hvertfald ikke men laver bare en error code
+!!!Tror det her kode er irrelevant? Virker i hvertfald ikke men laver bare en error code!!!
 
 //output.innerHTML = slider.value; // Display the default slider value
 
