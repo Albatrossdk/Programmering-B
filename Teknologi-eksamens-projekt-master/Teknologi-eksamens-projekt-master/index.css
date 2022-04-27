@@ -107,7 +107,7 @@ input{
 
 .card{
     margin-top: 1rem;
-    height: 16rem;
+    height: 16.3rem;
     border: 2px solid black;
     border-radius: 1rem;
     background-color: white;
@@ -147,7 +147,8 @@ input{
 }
 
 .page2{
-    background-image: url('./assets/sky.webp');
+    background-image: url('./assets/sky3.jpg');
+    background-size: cover;
 }
 
 #searchbox{
@@ -177,19 +178,39 @@ div:nth-child(8){
 
 .usersection{
     padding-top: 0.2rem;
-    border-top: 1px black solid;
     height: 2.5rem;
     width: 100%;
     bottom: 0;
+    margin-top: 0.25rem;
 
     display: grid;
-    grid-template-columns: 10fr 2fr 2fr;
+    grid-template-columns: 8fr 2fr 2fr 2fr;
+}
+
+.usersectionpop{
+    padding-top: 0.2rem;
+    height: 2.5rem;
+    width: 100%;
+    bottom: 0;
+    margin-top: 0.25rem;
+
+    display: grid;
+    grid-template-columns: 8fr 2fr 2fr 2fr;
 }
 
 .indhold{
-    height: 8.8rem;
+    height: 9.3rem;
     display: grid;
     grid-template-columns: 5fr 2fr;
+    border-bottom: 1px black solid;
+    padding-bottom: 1rem;
+}
+
+.indholdpop{
+    height: 10rem;
+    display: grid;
+    grid-template-columns: 5fr 2fr;
+    border-bottom: 1px black solid;
 }
 
 .toilet{
@@ -225,11 +246,14 @@ div:nth-child(8){
 .rating{
     display: grid;
     grid-template-columns: 1fr;
+    width: 90%;
+    margin-top: 5px;
 }
 
 .rating div{
     grid-row-start: 1;
     grid-column-start: 1;
+    
 }
 
 .rating1{
@@ -253,7 +277,7 @@ div:nth-child(8){
     background-color: rgb(252, 186, 3);
     z-index: 1;
 
-    height: 100%;
+    height: 91%;
 }
 
 .checked{
@@ -275,6 +299,9 @@ div:nth-child(8){
 
 .headvejr{
     border-bottom: 2px solid black;
+    margin-bottom: 5px;
+    display: grid;
+    place-items: center;
 }
 
 .slidecontainer {
@@ -338,4 +365,32 @@ div:nth-child(8){
 #inputreview{
     height: 10rem;
     border-radius: 15px;
+}
+
+.livredder{
+    background-image: url('./assets/lifeguard.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.cardpopdown{
+    transition: ease-in-out 0.3s;
+    position: absolute;
+    top: 120vh;
+    background-color: white;
+    border-top: 2px solid black;
+    width: 100%;
+    padding: 1rem;
+}
+
+.cardpopup{
+    transition: ease-in-out 0.3s;
+    position: absolute;
+    top: 53vh;
+    background-color: white;
+    border-top: 2px solid black;
+    width: 100%;
+    padding: 1rem;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
 }

@@ -2,6 +2,7 @@ let data
 let anbefalingBtn, narmesteBtn
 let button1, button2, button3
 var apidata
+var cardpressed = true
 
 function setup(){
     noCanvas()
@@ -45,21 +46,6 @@ function setup(){
     
 })
 
-
-const newMarker = (badested) => {
-    //console.log('running badested: ' + badested)
-    let coords = badested.coordinates
-    let coordsarray = coords.split(',')
-    //console.log(coordsarray)
-    const marker = new mapboxgl.Marker()
-    marker.setLngLat([coordsarray[1],coordsarray[0]])
-    marker.addTo(map)
-
-    marker.getElement().addEventListener('click', () => {
-        alert(badested.name);
-    })
-    
-}
 
 const newCard = (badesteder) => {
    
@@ -146,7 +132,19 @@ const newCard = (badesteder) => {
     rating.child(rating2)
     rating.child(rating3)
 
-    rating3.style('width', badesteder.rating*20-11+'%')
+    rating3.style('width', badesteder.rating*20+'%')
+
+
+    //Livredder
+    let livredder = createDiv('')
+    livredder.addClass('livredder')
+    usersection.child(livredder)
+
+    if (badesteder.livredder == "ja") {
+        livredder.style('opacity', '1')
+    } else{
+        livredder.style('opacity', '0.15')
+    }
 
 
     //toiletforhold 
@@ -158,7 +156,7 @@ const newCard = (badesteder) => {
     if (badesteder.toiletter == "ja") {
         toilet.style('opacity', '1')
     } else{
-        toilet.style('opacity', '0.4')
+        toilet.style('opacity', '0.15')
     }
 
     
@@ -175,8 +173,6 @@ const newCard = (badesteder) => {
         målgruppe.style('background-image', 'url(./assets/multi.png)')
     }
 
-
-
     
     //Vejr card
 
@@ -188,12 +184,12 @@ const newCard = (badesteder) => {
         console.log('found no data')
     }
 
-    //Creates card
 
     //Created heading for card
     let headvejr = createElement('h4', 'Vejr')
     indholdapi.child(headvejr)
     headvejr.addClass('headvejr')
+
     
     //Created weather
     let lufttemp = createElement('h5', 'Luft: ' + bData.data[0].air_temperature +'°')
@@ -228,25 +224,223 @@ const newCard = (badesteder) => {
 }
 
 const newPopUp = (badesteder) => {
-    //console.log('cum')
+       
+    //main card structure
+    let card = createDiv('')
+    let heading = createElement('h2')
+    let indhold = createDiv('')
+    
+    card.addClass('cardpopdown')
+    heading.addClass('heading')
+    indhold.addClass('indholdpop')
+    card.id('a'+badesteder['api-id'])
+    
+    let indholdinfo = createDiv('')
+    let indholdapi = createDiv('')
+    indholdinfo.addClass('indholdinfo')
+    indholdapi.addClass('indholdapi')
+    indhold.child(indholdinfo)
+    indhold.child(indholdapi)
+
+    //renlighed
+    let heading2 = createElement('h4', 'Badestedets snavsethed:')
+    let progressholder = createDiv('')
+    let progress = createDiv('')
+
+    heading2.addClass('heading2')
+    progressholder.addClass('progressholder')
+    progress.addClass('progress')
+
+    progress.style('width', badesteder.renlighed+'%')
+    
+    indholdinfo.child(heading2)
+    progressholder.child(progress)
+    indholdinfo.child(progressholder)
+
+
+    //mennesker
+    let heading3 = createElement('h4', 'Mængde mennesker:')
+    let progressholder1 = createDiv('')
+    let progress1 = createDiv('')
+
+    heading3.addClass('heading3')
+    progressholder1.addClass('progressholder')
+    progress1.addClass('progress')
+
+    progress1.style('width', badesteder.mennesker+'%')
+    
+    indholdinfo.child(heading3)
+    progressholder1.child(progress1)
+    indholdinfo.child(progressholder1)
+
+
+    //indhold
+
+    heading.html(badesteder.name)
+    card.child(heading)
+    card.child(indhold)
+
+
+    //"user interfaction" section (målgruppe..)
+    let usersection = createDiv('')
+    usersection.addClass('usersectionpop')
+    card.child(usersection)
+
+
+    //rating
+    let rating = createDiv('')
+    rating.addClass('rating')
+    usersection.child(rating)
+    
+    let rating1 = createDiv('')
+    let rating2 = createDiv('')
+    let rating3 = createDiv('')
+    
+    rating1.addClass('rating1')
+    rating2.addClass('rating2')
+    rating3.addClass('rating3')
+
+    rating.child(rating1)
+    rating.child(rating2)
+    rating.child(rating3)
+
+    rating3.style('width', badesteder.rating*20+'%')
+
+
+    //Livredder
+    let livredder = createDiv('')
+    livredder.addClass('livredder')
+    usersection.child(livredder)
+
+    if (badesteder.livredder == "ja") {
+        livredder.style('opacity', '1')
+    } else{
+        livredder.style('opacity', '0.15')
+    }
+
+
+    //toiletforhold 
+    let toilet = createDiv('')
+    toilet.addClass('toilet')
+    usersection.child(toilet)
+    //console.log(badesteder.toiletter)
+
+    if (badesteder.toiletter == "ja") {
+        toilet.style('opacity', '1')
+    } else{
+        toilet.style('opacity', '0.15')
+    }
+
+    
+    //målgruppe
+    let målgruppe = createDiv('')
+    målgruppe.addClass('målgruppe')
+    usersection.child(målgruppe)
+
+    if (badesteder.maalgruppe == 'familie') {
+        målgruppe.style('background-image', 'url(./assets/familie.png)')
+    } else if (badesteder.maalgruppe == 'ung') {
+        målgruppe.style('background-image', 'url(./assets/ung.png)')        
+    } else {
+        målgruppe.style('background-image', 'url(./assets/multi.png)')
+    }
+
+    
+    //Vejr card
+
+    //Finds and logs json object of our cards id specified in json
+    let bData = apidata.find( obj => obj.id == badesteder['api-id'])
+    if(bData){
+        console.log('found data: ', bData.data[0])
+    }else{
+        console.log('found no data')
+    }
+
+
+    //Created heading for card
+    let headvejr = createElement('h4', 'Vejr')
+    indholdapi.child(headvejr)
+    headvejr.addClass('headvejr')
+
+    
+    //Created weather
+    let lufttemp = createElement('h5', 'Luft: ' + bData.data[0].air_temperature +'°')
+    indholdapi.child(lufttemp)
+    lufttemp.addClass('lufttemp')
+
+    let vandtemp = createElement('h5', 'Vand: ' + bData.data[0].water_temperature +'°')
+    indholdapi.child(vandtemp)
+    vandtemp.addClass('vandtemp')
+
+    let vindspeed = createElement('h5', 'Vind: ' + bData.data[0].wind_speed +' m/s')
+    indholdapi.child(vindspeed)
+    vindspeed.addClass('vindspeed')
+
+
+    let imgholder = createDiv('')
+    indholdapi.child(imgholder)
+    imgholder.addClass('imgholder')
+    
+    let weathertype = createDiv('')
+    imgholder.child(weathertype)
+    weathertype.addClass('weathertype')
+    weathertype.style('background-image', "url('./assets/weather"+ bData.data[0].weather_type + ".png')")
+
+    let watertype = createDiv('')
+    imgholder.child(watertype)
+    watertype.addClass('watertype')
+    watertype.style('background-image', "url('./assets/water"+ bData.data[0].water_quality + ".png')")
+
+
+    //Close card
+    card.mouseReleased(()=>{
+        cardpressed = true
+        console.log('cardpressed')
+        //card.addClass('cardpopdown')
+    })
+    select('.page1').mouseReleased(()=>{
+        if (cardpressed == true){
+            console.log('cardnotpressed')
+            card.removeClass('cardpopup')
+            card.addClass('cardpopdown')
+        } else{
+
+        }
+    })
+    select('.buttons').mouseReleased(()=>{
+        if (cardpressed == true){
+            console.log('cardnotpressed')
+            card.removeClass('cardpopup')
+            card.addClass('cardpopdown')
+        } else{
+
+        }
+    })
+
+}
+
+//Lav markers på kortet på første side 
+const newMarker = (badested) => {
+    //console.log('running badested: ' + badested)
+    let coords = badested.coordinates
+    let coordsarray = coords.split(',')
+    //console.log(coordsarray)
+    const marker = new mapboxgl.Marker()
+    marker.setLngLat([coordsarray[1],coordsarray[0]])
+    marker.addTo(map)
+
+    //Få de rigtige cards til at poppe up når man klikker på deres matchende marker
+    marker.getElement().addEventListener('click', () => {
+        stedid = select('#a'+badested['api-id'])
+        console.log(stedid)
+        stedid.addClass('cardpopup')
+    })
+    
 }
 
 
-/*function draw(){
-    select('.anbefalinger').mouseReleased()
-}*/
-
-
-
-
-
-
-
-
-
-
 /*
-NOT WORKING, SEARCH FUNCTION PLS FIX GOD
+SEARCH FUNCTION
 
 
 function draw(){
@@ -260,17 +454,20 @@ function draw(){
         result.map( event => newCard(event) )
     })
 }
-
-function createCard(){
 */
-
 }
+
 
 var slider = document.getElementById("myRange");
 var output = document.getElementById("demo");
+
+
+/*
+Tror det her kode er irrelevant? Virker i hvertfald ikke men laver bare en error code
+
 //output.innerHTML = slider.value; // Display the default slider value
 
 // Update the current slider value (each time you drag the slider handle)
 slider.oninput = function() {
   output.innerHTML = this.value;
-}
+}*/
