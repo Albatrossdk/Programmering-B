@@ -35,16 +35,47 @@ function setup(){
         .then( res => res.json() )
         //when parse done, json object as variable.
         .then( json => {
-            console.log(json)
             data = json.badesteder
 
             json.badesteder.map( badesteder => {
                 newMarker(badesteder)
                 newCard(badesteder)
                 newPopUp(badesteder)
-    })    
+    })
+    
+    // Search function til page 2
+    select('#input2').input( ()=>{
+        let q = select('#input2').value().toLowerCase()
+            
+        let result = data.filter( event => 
+        event.name.toLowerCase().includes(q) )
+    
+        select('.cardholder').html('')
+    
+        result.map( event => newCard(event) )
+    })
     
 })
+
+//Lav markers på kortet på første side 
+const newMarker = (badested) => {
+    //console.log('running badested: ' + badested)
+    let coords = badested.coordinates
+    let coordsarray = coords.split(',')
+    //console.log(coordsarray)
+    const marker = new mapboxgl.Marker()
+    marker.setLngLat([coordsarray[1],coordsarray[0]])
+    marker.addTo(map)
+
+    //Få de rigtige cards til at poppe up når man klikker på deres matchende marker
+    marker.getElement().addEventListener('click', () => {
+        stedid = select('#a'+badested['api-id'])
+        stedid.addClass('cardpopup')
+    })
+    
+}
+
+}
 
 
 const newCard = (badesteder) => {
@@ -199,7 +230,7 @@ const newCard = (badesteder) => {
     //Finds and logs json object of our cards id specified in json
     let bData = apidata.find( obj => obj.id == badesteder['api-id'])
     if(bData){
-        console.log('found data: ', bData.data[0])
+        //console.log('found data: ', bData.data[0])
     }else{
         console.log('found no data')
         location.reload()
@@ -239,9 +270,6 @@ const newCard = (badesteder) => {
     imgholder.child(watertype)
     watertype.addClass('watertype')
     watertype.style('background-image', "url('./assets/water"+ bData.data[0].water_quality + ".png')")
-
-
-
 }
 
 const newPopUp = (badesteder) => {
@@ -429,12 +457,12 @@ const newPopUp = (badesteder) => {
     //Close card
     card.mouseReleased(()=>{
         cardpressed = true
-        console.log('cardpressed')
+        //console.log('cardpressed')
         //card.addClass('cardpopdown')
     })
     select('.page1').mouseReleased(()=>{
         if (cardpressed == true){
-            console.log('cardnotpressed')
+            //console.log('cardnotpressed')
             card.removeClass('cardpopup')
             card.addClass('cardpopdown')
         } else{
@@ -443,7 +471,7 @@ const newPopUp = (badesteder) => {
     })
     select('.buttons').mouseReleased(()=>{
         if (cardpressed == true){
-            console.log('cardnotpressed')
+            //console.log('cardnotpressed')
             card.removeClass('cardpopup')
             card.addClass('cardpopdown')
         } else{
@@ -453,43 +481,7 @@ const newPopUp = (badesteder) => {
 
 }
 
-//Lav markers på kortet på første side 
-const newMarker = (badested) => {
-    //console.log('running badested: ' + badested)
-    let coords = badested.coordinates
-    let coordsarray = coords.split(',')
-    //console.log(coordsarray)
-    const marker = new mapboxgl.Marker()
-    marker.setLngLat([coordsarray[1],coordsarray[0]])
-    marker.addTo(map)
 
-    //Få de rigtige cards til at poppe up når man klikker på deres matchende marker
-    marker.getElement().addEventListener('click', () => {
-        stedid = select('#a'+badested['api-id'])
-        console.log(stedid)
-        stedid.addClass('cardpopup')
-    })
-    
-}
-
-
-/*
-SEARCH FUNCTION
-
-
-function draw(){
-    document.querySelector('#input').addEventListener('input', ()=>{
-        let q = document.querySelector('#input').value
-    
-        let result = data.filter( events => 
-        events.name.includes(q) 
-        || events.maalgruppe.join(' ').includes(q) )
-        document.querySelector('main').innerHTML = ''
-        result.map( event => newCard(event) )
-    })
-}
-*/
-}
 
 
 var slider = document.getElementById("myRange");
