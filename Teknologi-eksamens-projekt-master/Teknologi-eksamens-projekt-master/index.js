@@ -23,7 +23,7 @@ function setup(){
     })
 
     //hent info om badesteder og gem i apidata
-    fetch('http://api.vandudsigten.dk/beaches')
+    fetch('https://api.vandudsigten.dk/beaches')
     .then(res => res.json())
     .then(json => {
         apidata = json
