@@ -1,28 +1,14 @@
-@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Glory:wght@200&display=swap');
 
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Rubik';
+    font-family: 'Glory';
 }
 
-body{
-    width: 100vw;
-    height: 100vw;
-    overflow: hidden;
-}
-
-canvas{
-    position: fixed;
-    top: 0;
-    left: 0;
-}
-
-#info{
-    position: fixed;
-    z-index: 5;
-    color: white;
-    right: 2rem;
-    bottom: 2rem;
+main{
+    height: 100vh;
+    display: grid;
+    place-items: center;
 }
