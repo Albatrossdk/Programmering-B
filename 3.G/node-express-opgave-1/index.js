@@ -9,28 +9,33 @@ const app = express()
 const port = 2500
 //Vi laver en meget simpel database
 const misInformation = {
-     'frederik': 'Frederik er sej',
-     'theis': 'Theis har gode øjne',
-     'john': 'John kussekvinde',
-     'viktor': 'Viktor er god til ikke at ødelægge ting når han er fuld',
-     'simmoe': 'Simmoe er ikke verdens bedste lærer',
-     'helmut': 'Helmut er hvid',
-     'bjørn': 'Bjørn har en lille pik',
-     'palme': 'Palme er ikke gud',
-     'bjarke': 'Bjarkes nøgne far er ikke lækker'
-
+     'frederik': 'Frederik er sej (Misinformation)',
+     'theis': 'Theis har gode øjne (Misinformation)',
+     'john': 'John kussekvinde (Misinformation)',
+     'viktor': 'Viktor er god til ikke at ødelægge ting når han er fuld (Misinformation)',
+     'simmoe': 'Simmoe er ikke verdens bedste lærer (Misinformation)',
+     'helmut': 'Helmut er hvid (Misinformation)',
+     'bjørn': 'Bjørn har en lille pik (Misinformation)',
+     'palme': 'Palme er ikke gud (Misinformation)',
+     'bjarke': 'Bjarkes nøgne far er ikke lækker (Misinformation)'
 }
 
-app.get('/*', (req, res)=>{
+//serve en statisk mappe
+app.get('/', express.static('public'))
+
+
+
+app.get('/api/*', (req, res)=>{
     console.log('serveren fik besøg i roden')
     if(req.params[0]){
         console.log('WOW! nogle vil bruge vores api: ' + req.params[0])
         if(misInformation[req.params[0]]){
             res.send(misInformation[req.params[0]])
+        }else if(req.params[0] == 'information'){
+            res.send('Information: Du kan finde (mis)information på disse endpoints: frederik, theis, john, viktor, simmoe, helmut, bjørn, palme, bjarke')
         }else{
             res.send('\'' + req.params[0] + '\'' + ' is NOT an api endpoint. Go to this link for list of api endpoints: shorturl.at/ahiK9')
         }
-
     }else{
         res.send('Du besøgte mig i min rod!!')
     }
