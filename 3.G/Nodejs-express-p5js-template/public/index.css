@@ -6,3 +6,34 @@
     box-sizing: border-box;
     font-family: 'Rubik';
 }
+
+#chatBox, #nameBox{
+    background-color: aliceblue;
+    width: 40vw;
+    height: 40vh;
+    position: fixed;
+    top: 20vh;
+    left: 30vw;
+    z-index: 5;
+    display: grid;
+    grid-template-rows: 6fr 1fr;
+    transition:all .5s ease-in-out
+}
+
+#chat{
+    background: white;
+    padding: 1rem;
+    overflow: scroll;
+}
+
+#chat p{
+    background-color: lightblue;
+    color: white;
+    margin: 5px;
+    padding: 3px;
+    border-radius: 3px;
+}
+
+#chatBox.hide, #nameBox.hide{
+    left:-100vw;
+}
