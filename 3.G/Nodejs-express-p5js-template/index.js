@@ -12,6 +12,8 @@ const express = require('express')
 const app = express()
 //json array til brugerinfo
 let users = []
+
+let messageHistory = []
 //definer en port
 const port = 666
 //start en webserver på port 666
@@ -34,16 +36,33 @@ app.get('/ip', (req, res)=>{
 
 serverSocket.sockets.on('connection', socket => {
     console.log('new socket connection established')
+    
+    
+    serverSocket.sockets.emit('msgHist', messageHistory)
+
     //socket.on er en eventlistener på nye beskeder fra klienter
-    socket.on('chat', message => {
-        console.log(message)
-        //når serveren modtager beskeder send den dem rundt til alle. (rundt til alle sockets)
-        serverSocket.sockets.emit('newMessage', message)
-    })
     socket.on('newUser', user =>{
-        users.push({'name':user, 'id':socket.id})
+        users[socket.id] = ({'name':user.name, 'color':user.color})
+        console.log(users)
+    })
+
+    socket.on('chat', message => {
+        //når serveren modtager beskeder send den dem rundt til alle. (rundt til alle sockets)
+        //users.push({'message':message})
+        console.log(message)
         console.log(users)
 
-    })
+        let newMessage = {}
+        newMessage.message = message
+        newMessage.name = users[socket.id].name
+        newMessage.color = users[socket.id].color
+        serverSocket.sockets.emit('newMessage', newMessage)
 
+        let NewMsgForHist = {}
+        NewMsgForHist.message = message
+        NewMsgForHist.name = users[socket.id].name
+        NewMsgForHist.color = users[socket.id].color
+        messageHistory.push(NewMsgForHist)
+    })
+    
 })

@@ -7,10 +7,10 @@
     font-family: 'Rubik';
 }
 
-#chatBox, #nameBox{
+#chatBox{
     background-color: aliceblue;
     width: 40vw;
-    height: 40vh;
+    height: 60vh;
     position: fixed;
     top: 20vh;
     left: 30vw;
@@ -20,18 +20,46 @@
     transition:all .5s ease-in-out
 }
 
+#nameBox{
+    background-color: aliceblue;
+    width: 40vw;
+    height: 40vh;
+    position: fixed;
+    top: 20vh;
+    left: 30vw;
+    z-index: 5;
+    display: grid;
+    grid-template-rows: 3fr 3fr 1fr;
+    transition:all .5s ease-in-out;
+}
+
 #chat{
     background: white;
     padding: 1rem;
     overflow: scroll;
 }
 
-#chat p{
-    background-color: lightblue;
-    color: white;
+.msgholder{
     margin: 5px;
     padding: 3px;
     border-radius: 3px;
+    color: black;
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    
+}
+
+.namep{
+    font-size: 0.7rem;
+    color: black;
+    margin-top: 5px;
+}
+
+.msgp{
+    padding: 5px;
+    border-radius: 5px;
+    width: fit-content;
+    color: white;
 }
 
 #chatBox.hide, #nameBox.hide{
