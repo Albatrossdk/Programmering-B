@@ -4,6 +4,7 @@ let msgp
 let namep
 let msgHolder
 let userInfo
+let clientSocketId
 
 function setup(){
     createCanvas(windowWidth, windowHeight)
@@ -17,16 +18,20 @@ function setup(){
         })
 
         clientSocket = io.connect()
-        clientSocket.on('userInfo', users => {
-            console.log(users)
-            console.log(users[1])
-            
+
+        clientSocket.on('userInfo', users => {            
             userInfo = users
 
         })
 
+        clientSocket.on('yourId', socketid => {
+            console.log(socketid)
+            clientSocketId = socketid
+        })
+
         clientSocket.on('msgHist', msgHist => {
             console.log(msgHist)
+            select('#chat').html('')
 
             msgHist.map(( message =>{
                 console.log(message)
@@ -44,6 +49,11 @@ function setup(){
                 msgHolder.child(namep)
                 msgHolder.child(msgp)
                 select('#chat').elt.scrollTop = select('#chat').elt.scrollHeight
+
+                if (message.socketId == clientSocketId) {
+                    msgHolder.addClass('ownMsg')
+                }
+
             }))
 
 
@@ -65,6 +75,10 @@ function setup(){
             msgHolder.child(namep)
             msgHolder.child(msgp)
             select('#chat').elt.scrollTop = select('#chat').elt.scrollHeight
+
+            if (message.socketId == clientSocketId) {
+                msgHolder.addClass('ownMsg')
+            }
         })
 
         select('#nameButton').mousePressed(()=>{

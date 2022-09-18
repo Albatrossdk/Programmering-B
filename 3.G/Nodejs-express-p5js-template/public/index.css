@@ -65,3 +65,9 @@
 #chatBox.hide, #nameBox.hide{
     left:-100vw;
 }
+
+.ownMsg{
+    display: grid;
+    place-items: flex-end;
+    
+}

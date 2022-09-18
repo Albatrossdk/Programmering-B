@@ -37,8 +37,8 @@ app.get('/ip', (req, res)=>{
 serverSocket.sockets.on('connection', socket => {
     console.log('new socket connection established')
     
-    
     serverSocket.sockets.emit('msgHist', messageHistory)
+    serverSocket.to(socket.id).emit('yourId', socket.id)
 
     //socket.on er en eventlistener på nye beskeder fra klienter
     socket.on('newUser', user =>{
@@ -56,12 +56,14 @@ serverSocket.sockets.on('connection', socket => {
         newMessage.message = message
         newMessage.name = users[socket.id].name
         newMessage.color = users[socket.id].color
+        newMessage.socketId = socket.id
         serverSocket.sockets.emit('newMessage', newMessage)
-
+        
         let NewMsgForHist = {}
         NewMsgForHist.message = message
         NewMsgForHist.name = users[socket.id].name
         NewMsgForHist.color = users[socket.id].color
+        NewMsgForHist.socketId = socket.id
         messageHistory.push(NewMsgForHist)
     })
     
