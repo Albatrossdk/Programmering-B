@@ -12,5 +12,6 @@ fetch('https://api.giphy.com/v1/gifs/trending?api_key=' + api_key + '&limit=20&r
     const insertImage = (url) =>{
         let img = document.createElement('img')
         img.src = url
+        console.log(document.querySelector('body'))
         document.querySelector('body').append(img)
     }
