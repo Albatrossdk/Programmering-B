@@ -1,9 +1,9 @@
 <script>
 	import{fly, fade} from 'svelte/transition'
+	import{onMount} from 'svelte'
 	let name = "Gertrud";
 	let destination = "Vienna"
-	let destinations = ['Berlin', 'Tokyo', 'Paris']
-	let imageArray = []
+	let destinations = [{'name':'Berlin'}, {'name':'Tokyo'}, {'name':'Paris'}]
 	const removeItem = (i)=>{
 		destinations.splice(i, 1)
 		destinations = destinations
@@ -13,24 +13,33 @@
 	const createBackgroundArray = () =>{
 		destinations.map(n=>{
 			console.log(n)
-			fetch("https://api.giphy.com/v1/gifs/search?&api_key=y29zSFTKH8okWLq2IxkcudGq1j9NYQ9i&q="+n+"&limit=1")
+			fetch("https://api.giphy.com/v1/gifs/search?&api_key=y29zSFTKH8okWLq2IxkcudGq1j9NYQ9i&q="+n.name+"&limit=1")
 			.then( response => response.json() )
 			.then( json => {
-				let bgImg = json.data[0].images.original.url
-				imageArray = [...imageArray, bgImg]
-				console.log(imageArray)
+				n.img = json.data[0].images.original.url
+				destinations = destinations
 			})
 		})
 	
 	}
 	const updateDestinations = () =>{
-		destinations = [...destinations, destination];destination=''
-		imageArray = []		
-		createBackgroundArray()
-		}
+		fetch("https://api.giphy.com/v1/gifs/search?&api_key=y29zSFTKH8okWLq2IxkcudGq1j9NYQ9i&q="+destination+"&limit=1")
+		.then( response => response.json() )
+		.then( json => {
+			if(json.data[0] === undefined){
+				console.log('User search query returned no results in GIPHY api')
+				destination = ''
+				alert('Woops! Sorry no gif could be found with that search query, please try again :3')
+				return
+			}else{
+				destinations = [...destinations, {'name':destination, 'img':json.data[0].images.original.url}]
+				destination = ''
+				destinations = destinations
+			}
+			})
+	}
 	
 	createBackgroundArray()
-
 </script>
 
 <header>
@@ -54,7 +63,7 @@
 	
 	<div class='destinations'>
 		{#each destinations as n, index}
-			<div transition:fly="{{ y: 200, duration: 1000, delay:index*100}}" id={n} class='destination' style:background-image={'url('+imageArray[index]+')'} on:click={()=>removeItem(index)}>{n} ({index})</div>
+			<div transition:fly="{{ y: 200, duration: 1000, delay:index*100}}" id={n.name} class='destination' style="background-image:url('{n.img}')" on:click={()=>removeItem(index)}>{n.name} ({index})</div>
 		{/each}
 	</div>
 
@@ -115,6 +124,7 @@
 		gap: 2rem;
 		height: 75vh;
 		overflow-x: scroll;
+		padding: 1rem;
 	}
 	.destination{
 		display: grid;
