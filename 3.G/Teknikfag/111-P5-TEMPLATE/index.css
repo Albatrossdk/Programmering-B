@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Rubik';
+}
+
+body{
+    width: 100vw;
+    height: 100vw;
+    overflow: hidden;
+}
+
+
+#info{
+    position: fixed;
+    z-index: 5;
+    color: white;
+    right: 2rem;
+    bottom: 2rem;
+}
+
+main{
+    height: 100vh;
+    display: grid;
+    grid-auto-flow: column;
+    overflow: scroll;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+    background-color: whitesmoke;
+}
+
+.page{
+    height: 100vh;
+    width: 100vw;
+    display: grid;
+    place-items: center;
+    scroll-snap-align: center;
+}
+
+.video{
+    width: 100vw;
+    height: 100vh;
+}
+
+#page3{
+    place-items: center;
+    position: relative;
+}
+
+.score{
+    position: absolute;
+    display: grid;
+    color: white;
+    font-size: x-large;
+    right: 1rem;
+    top: 0.7rem;
+}
+
+.youlost{
+    position: absolute;
+    z-index: -5;
+    display: grid;
+    place-items: center;
+    color: red;
+    font-size: large;
+}
+
+button{
+    margin: 1rem;
+    padding: 1rem;
+    font-size: large;
+    border-radius: 10px;
+}
+
+.hide{
+    z-index: 0;
+}
+
+.show{
+    z-index: 5;
+}
+
+#losebutton{
+    margin: 1rem;
+    padding: 1rem;
+    font-size: large;
+    font-weight: 1000;
+    border-radius: 10px;
+    background-color: white;
+    border: 1.5px solid black;
+}

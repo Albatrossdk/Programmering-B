@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto';
+    
+}
+
+body{
+    background: lightblue;
+    display: grid;
+    place-items: center;
+    width: 100vw;
+    height: 100vh;
+}
+
+#naturkrafter{
+    background: greenyellow;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 90vh;
+    display: grid;
+    grid-template-rows: 10vh 90vh;
+    transition: 1s ease-in-out;
+}
+
+#naturkrafter h2{
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+}
+
+#naturkrafter .content{
+    padding: 20vw;
+    background-color: rgba(100, 100, 30, 50); 
+}
+
+.example{
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+}
+
+#endpointH{
+    height: 3rem;
+    background: white;
+    border: 1px solid black;
+    display: grid;
+    align-content: center;
+    padding-left: 2rem;
+}
+
+#submitH{
+    height: 3rem;
+    display: grid;
+    place-items: center;
+    border: solid 2px palevioletred;
+    cursor: pointer;
+    border-radius: 2rem;
+    background-color: palevioletred;
+    transition: all .2s ease-in-out;
+    text-decoration: none;
+}
+
+
+#submitH :hover{
+    background-color: darkslategray;
+    border: solid 2px darkslategray;
+    color: white;
+}
+
+.json{
+    width: 100%;
+    height: 20vh;
+    background: white;
+    margin-top: .5rem;
+    border: 1px solid lightgray;
+    padding: 2rem;
+}
+
+.intro{
+    height: 3rem;
+    display: grid;
+    place-items: center;
+    color: lightgray;
+}

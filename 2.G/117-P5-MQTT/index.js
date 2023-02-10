@@ -8,10 +8,6 @@ function setup(){
         info.html('lort')
         
         client.subscribe('moodT')
-
-        client.on('message', (topic, message) => {
-            info.html('Mood: ' + message + ' på emnet: ' + topic)
-        })
     })
 }
 
