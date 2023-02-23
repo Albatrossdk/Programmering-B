@@ -27,9 +27,6 @@ function preload(){
 }
 
 function setup(){
-    //request fullscreen
-
-
     //framerate på canvas
     frameRate(60)
 
@@ -45,6 +42,7 @@ function setup(){
 
     //Failsafe start video1
     video1.mouseClicked(()=>{
+        //Fulscreen
         select('body').elt.requestFullscreen()
         console.log('klikket')
         video1.play()
