@@ -28,10 +28,7 @@ function preload(){
 
 function setup(){
     //request fullscreen
-    if (confirm("Accept fullscreen") == true) {
-        select('body').elt.requestFullscreen(hide)
-        console.log('Fullscreen accepted')
-      }
+
 
     //framerate på canvas
     frameRate(60)
@@ -71,7 +68,7 @@ function setup(){
             if(topic == 'flappybird' && gamestarted == true){
                 once3 = true
                 if(once3 == true){
-                    velocity -= jump
+                    velocity -= jump/2
                     console.log('jump')
                     once3 = false
                 }
