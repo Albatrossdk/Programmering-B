@@ -68,7 +68,7 @@ function setup(){
             if(topic == 'flappybird' && gamestarted == true){
                 once3 = true
                 if(once3 == true){
-                    velocity -= jump/2
+                    velocity -= jump
                     console.log('jump')
                     once3 = false
                 }
