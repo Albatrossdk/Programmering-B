@@ -1,16 +1,50 @@
 <script>
-    export let responeBeers
+    import Beer from './Beer.svelte'
+    export let responseBeers
+    console.log(responseBeers)
+    let q = ''
 </script>
 
 
 <main>
-    <h1>Find Øl</h1>
-    {#each responeBeers as beer}
-        <h1>{beer.name}</h1>
-    {/each}    
+    <div class="headerdiv" >
+        <h1>Find Øl</h1>
+        <input type="text" bind:value={q}>
+    </div>
+
+    <div class="beerholder">
+        {#each responseBeers as beer}
+            {#if beer.name.toLowerCase().includes(q.toLowerCase())}
+            <Beer {beer}/> 
+            {/if}
+        {/each}    
+    </div>
 </main>
 
 
 <style>
+    h1.saed{
+        border-bottom: solid white 3px;
+        font-size: 100%;
+        
+    }
+
+
+    main{
+        padding-top: 1rem;
+        width: 100vw;
+        background-color: rgb(122, 182, 162);
+        color: white;
+    }
+
+    .beerholder{
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    }
+    
+    .headerdiv{
+        display: grid;
+        place-items: center;
+    }
 
 </style>

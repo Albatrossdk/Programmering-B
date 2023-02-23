@@ -5,7 +5,7 @@
 	import DineFavoritter from "./components/DineFavoritter.svelte";
 	import RandomBeer from "./components/RandomBeer.svelte";
 	let menu = ['Frontpage', 'Find Øl', 'Dine Favoritter', 'Random Beer']
-	let activePage = menu[0]
+	let activePage = menu[1]
 
 	let responseBeers = []
 	let yourFavorites = []
@@ -31,9 +31,9 @@
 	{:else if activePage == menu[1]}
 		<FindØl {responseBeers}/>
 	{:else if activePage == menu[2]}
-		<DineFavoritter />
+		<DineFavoritter {responseBeers}/>
 	{:else if activePage == menu[3]}
-		<RandomBeer />
+		<RandomBeer {responseBeers}/>
 	{/if}
 	
 </main>
@@ -52,6 +52,7 @@
 		font-weight: 100;
 	}
 	header{
+		border-bottom: black solid 2px;
 		display: grid;
 		height: 10vh;
 		grid-auto-flow: column;

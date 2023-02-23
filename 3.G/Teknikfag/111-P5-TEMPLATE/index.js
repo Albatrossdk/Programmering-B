@@ -27,6 +27,12 @@ function preload(){
 }
 
 function setup(){
+    //request fullscreen
+    if (confirm("Accept fullscreen") == true) {
+        document.documentElement.webkitRequestFullScreen()
+        console.log('Fullscreen accepted')
+      }
+
     //framerate på canvas
     frameRate(60)
 
@@ -168,7 +174,7 @@ function draw(){
     showRect()
     updateRect()
     collision()
-    scoreis10()
+    scoreis5()
     //console.log(frameCount) 
 
     //Video2 lort (virker ikke ved ikke helt hvorfor)
@@ -233,8 +239,8 @@ function restartgame(){
     rectX = windowWidth
 }
 
-function scoreis10(){
-    if(score == 10){
+function scoreis5(){
+    if(score == 5){
         score = 0
         stopgame()
         select('#video3').play()
