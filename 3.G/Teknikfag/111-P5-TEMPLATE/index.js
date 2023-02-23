@@ -29,7 +29,7 @@ function preload(){
 function setup(){
     //request fullscreen
     if (confirm("Accept fullscreen") == true) {
-        select('body').elt.requestFullscreen()
+        select('body').elt.requestFullscreen(hide)
         console.log('Fullscreen accepted')
       }
 
@@ -48,6 +48,7 @@ function setup(){
 
     //Failsafe start video1
     video1.mouseClicked(()=>{
+        select('body').elt.requestFullscreen()
         console.log('klikket')
         video1.play()
     })
