@@ -48,6 +48,7 @@ function setup(){
 
     //Failsafe start video1
     video1.mouseClicked(()=>{
+        document.documentElement.webkitRequestFullScreen()
         console.log('klikket')
         video1.play()
     })
