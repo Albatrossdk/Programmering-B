@@ -1,4 +1,5 @@
 <script>
+    import Infobox from './Infobox.svelte';
     import Beer from './Beer.svelte'
     export let responseBeers
     console.log(responseBeers)
@@ -25,8 +26,7 @@
 <style>
     h1.saed{
         border-bottom: solid white 3px;
-        font-size: 100%;
-        
+        font-size: 100%; 
     }
 
 
@@ -36,7 +36,7 @@
         background-color: rgb(122, 182, 162);
         color: white;
     }
-
+    
     .beerholder{
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
