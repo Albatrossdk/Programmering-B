@@ -100,6 +100,10 @@ function setup(){
     let page3 = select('#page3')
     canvas.parent(page3)
 
+    canvas.mousePressed(()=>{
+        velocity -= jump
+    })
+
     frameRate(fr)
     background('cornflowerblue')
     diameter = 32
@@ -185,10 +189,7 @@ function keyPressed(key){
     }
 }
 
-select('#page3').mouseClicked(()=>{
-    //Fulscreen
-    velocity -= jump
-})
+
 
 function collision(){
     if(((x > rectX) && (x < rectX + rectW) &&
@@ -239,7 +240,7 @@ function restartgame(){
 }
 
 function scoreis5(){
-    if(score == 2){
+    if(score == 3){
         score = 0
         stopgame()
         select('#video3').play()
