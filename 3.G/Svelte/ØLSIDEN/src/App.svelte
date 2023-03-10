@@ -29,9 +29,9 @@
 	{#if activePage == menu[0]}
 		<Frontpage />
 	{:else if activePage == menu[1]}
-		<FindØl {responseBeers}/>
+		<FindØl {responseBeers} bind:yourFavorites={yourFavorites}/>
 	{:else if activePage == menu[2]}
-		<DineFavoritter {responseBeers}/>
+		<DineFavoritter bind:yourFavorites={yourFavorites}/>
 	{:else if activePage == menu[3]}
 		<RandomBeer {responseBeers}/>
 	{/if}

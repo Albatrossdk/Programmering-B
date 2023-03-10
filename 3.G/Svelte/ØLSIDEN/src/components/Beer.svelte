@@ -1,10 +1,13 @@
 <script>
     import Infobox from './Infobox.svelte';
     import {scale} from 'svelte/transition'
-import InfoBox from './Infobox.svelte'
+    import InfoBox from './Infobox.svelte'
     export let beer
+    export let yourFavorites
+    export let favoriteState
+    
     let result
-    let imagestate  
+    let imagestate
 
     function checkImage(url) {
         return new Promise((resolve) => {
@@ -36,7 +39,19 @@ import InfoBox from './Infobox.svelte'
 </script>
 
 <main on:click={()=> active=!active}>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <h1 class="saed">{beer.name}</h1>
+    <span on:click={()=>{
+        if(favoriteState){
+            favoriteState = false
+            //remove from array
+        }else{
+            favoriteState = true
+            yourFavorites = [...yourFavorites, beer]
+            console.log(yourFavorites)
+        }
+    }} 
+    class="fa fa-star"></span>
     {#if imagestate === true}
         <img src="{beer.image}">
     {:else}
@@ -78,6 +93,11 @@ import InfoBox from './Infobox.svelte'
     .active{
         position:absolute;
         z-index:2;
+    }
+    .fa{
+        position: absolute;
+        right: 3%;
+        top: 5%;
     }
 
 </style>

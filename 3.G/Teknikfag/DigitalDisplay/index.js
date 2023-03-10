@@ -110,7 +110,7 @@ function setup(){
     rectX = windowWidth - rectW
     rectY = windowHeight - rectH
     lives = 2
-    offset = round(windowHeight/12.03) //60 on laptop screen
+    offset = round(windowHeight/15) //60 on laptop screen
 }
 
 function showRect(){
@@ -184,6 +184,11 @@ function keyPressed(key){
         velocity -= jump
     }
 }
+
+select('#page3').mouseClicked(()=>{
+    //Fulscreen
+    velocity -= jump
+})
 
 function collision(){
     if(((x > rectX) && (x < rectX + rectW) &&

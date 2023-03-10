@@ -2,6 +2,7 @@
     import Infobox from './Infobox.svelte';
     import Beer from './Beer.svelte'
     export let responseBeers
+    export let yourFavorites
     console.log(responseBeers)
     let q = ''
 </script>
@@ -16,7 +17,7 @@
     <div class="beerholder">
         {#each responseBeers as beer}
             {#if beer.name.toLowerCase().includes(q.toLowerCase())}
-            <Beer {beer}/> 
+            <Beer {beer} bind:yourFavorites={yourFavorites}/> 
             {/if}
         {/each}    
     </div>
