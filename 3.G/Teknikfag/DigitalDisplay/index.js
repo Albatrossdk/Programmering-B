@@ -240,7 +240,7 @@ function restartgame(){
 }
 
 function scoreis5(){
-    if(score == 3){
+    if(score == 2){
         score = 0
         stopgame()
         select('#video3').play()
