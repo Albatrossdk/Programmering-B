@@ -8,6 +8,7 @@
     
     let result
     let imagestate
+    let index
 
     function checkImage(url) {
         return new Promise((resolve) => {
@@ -44,7 +45,10 @@
     <span on:click={()=>{
         if(favoriteState){
             favoriteState = false
-            //remove from array
+            console.log(yourFavorites)
+            index = yourFavorites.findIndex(x => x.id === beer.id)
+            yourFavorites.splice(index, 1)
+		    yourFavorites = yourFavorites
         }else{
             favoriteState = true
             yourFavorites = [...yourFavorites, beer]

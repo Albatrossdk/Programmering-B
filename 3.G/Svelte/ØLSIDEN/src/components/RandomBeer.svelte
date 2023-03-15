@@ -98,8 +98,8 @@
     }
 
     .obama{
-        height: 90%;
-        width: 50%;
+        height: 85%;
+        width: 40%;
     }
 
 </style>
