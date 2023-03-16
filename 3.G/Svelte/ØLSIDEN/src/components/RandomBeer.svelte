@@ -2,7 +2,6 @@
     export let responseBeers
     let randomIndex = Math.floor(Math.random() * 181)
 
-    console.log(responseBeers[1])
     
 
     let imagestate  
@@ -20,14 +19,11 @@
 
     function imageExists(url){
         checkImage(url).then((result) => {
-            console.log('result'+result);
             if (typeof result === "string") {
-                console.log('im alive')
                 imagestate = false
             } else {
                 // The image exists
                 imagestate = true
-                console.log(result);
                 // Do something with the image element, e.g. add it to the DOM
             }
     });

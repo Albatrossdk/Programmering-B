@@ -17,6 +17,27 @@
 		responseBeers = json
 	})
 
+	const checkFav = (beer)=>{
+		if(yourFavorites.find(f=>f.id==beer.id)){
+			return true
+		}else{
+			return false
+		}
+	}
+
+	const removeFav = (beer)=>{
+		let filter = yourFavorites.filter(f=>f.id != beer.id)
+		yourFavorites = filter
+		console.log("Removed beer ", yourFavorites) 
+	}
+
+	const addFav = (beer)=>{
+		yourFavorites = [...yourFavorites, beer]
+        console.log("Adding beer ", yourFavorites) 
+	}
+
+		
+
 </script>
 
 <header>
@@ -29,9 +50,9 @@
 	{#if activePage == menu[0]}
 		<Frontpage />
 	{:else if activePage == menu[1]}
-		<FindØl {responseBeers} bind:yourFavorites={yourFavorites}/>
+		<FindØl {responseBeers} {addFav} {checkFav} {removeFav}/>
 	{:else if activePage == menu[2]}
-		<DineFavoritter bind:yourFavorites={yourFavorites}/>
+		<DineFavoritter {removeFav} {checkFav} {addFav} {yourFavorites}/>
 	{:else if activePage == menu[3]}
 		<RandomBeer {responseBeers}/>
 	{/if}

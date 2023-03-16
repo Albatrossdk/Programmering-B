@@ -1,8 +1,9 @@
 <script>
     export let yourFavorites
     import Beer from './Beer.svelte'
-
-    let favoriteState = true
+    export let checkFav
+    export let addFav
+    export let removeFav
 
 </script>
 
@@ -14,7 +15,7 @@
 
     <div class="beerholder">
         {#each yourFavorites as beer}
-        <Beer {beer} {favoriteState} bind:yourFavorites={yourFavorites}/> 
+        <Beer {beer} {addFav} {checkFav} {removeFav}/> 
         {/each}    
     </div>
     
