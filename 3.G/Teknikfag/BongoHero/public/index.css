@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Rubik';
+}
+
+body{
+    width: 100vw;
+    height: 100vw;
+    overflow: hidden;
+}
+
+main{
+    width: 100vw;
+    height: 90vh;
+    display: grid;
+    grid-auto-flow: column;
+    overflow-x: scroll;
+    /*overflow-y: hidden;*/
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+    background-color: whitesmoke;
+}
+
+.page{
+    height: 90vh;
+    width: 100vw;
+    display: grid;
+    place-items: center;
+    scroll-snap-align: center;
+}
+
+header{
+    height: 10vh;
+    width: 100vw;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    border-bottom: slategray 2px solid;
+    font-weight: 800;
+}
+
+.button{
+    height: 100%;
+    width: 100%;
+    display: grid;
+    place-items: center;
+    font-size: larger;
+}
+
+.active{
+    color: orangered;
+}
+
+.hidden{
+    z-index: -5;
+}
+
+@font-face {
+    font-family: bongoHero;
+    src: url(https://fonts.cdnfonts.com/s/8082/Nightmare_Hero_Normal.woff);
+  }
+
+#title{
+    font-family: bongoHero;
+    font-size: 7rem;
+}
+
+#andreasmor{
+    display: grid;
+    place-items: center;
+}
+
+#page2{
+    display: grid;
+    place-items: center;
+    grid-template-columns: 1fr 1fr;
+}
+
+.gamemode{
+    height: 100%;
+    width: 100%;
+    display: grid;
+    place-items: center;
+    font-family: bongoHero;
+    font-size: 3rem;
+}
+
+.gamemode h3{
+    font-family: bongoHero;
+    font-size: 10rem;
+    font-weight: 300;
+}
+
+#page3{
+    background-image: url(./assets/background.gif);
+    background-size: cover;
+}
+
+.trapezoid{
+    background-color: aliceblue;
+}

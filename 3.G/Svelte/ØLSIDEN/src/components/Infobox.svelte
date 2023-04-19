@@ -13,6 +13,7 @@
         <h2>Rating:</h2>
         <h3>{Math.round(beer.rating.average * 100)/100} / 5 ({beer.rating.reviews} reviews)</h3>
     </div>
+    <img class="closeimage" src="./assets/close.svg" alt="">
 </main>
 
 
@@ -33,6 +34,21 @@
         grid-template-rows: 1fr 1fr 1fr;
         padding-top: 10%;
         padding-bottom: 10%;
+        position: relative;
+    }
+
+    .closeimage{
+        position: absolute;
+        z-index: 4;
+        height: 2rem;
+        width: 2rem;
+        top: 5%;
+        right: 5%;
+        color: white;
+    }
+
+    .title{
+        width: 80%;
     }
 
 </style>

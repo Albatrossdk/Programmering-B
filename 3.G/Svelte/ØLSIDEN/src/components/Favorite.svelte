@@ -25,22 +25,14 @@
     main{
         display: grid;
         place-items: center;
-        border-radius: 1rem;
-        border: solid black 2px;
-        padding: 1rem;
         margin: 1rem;
-        height: 300px;
         text-align: center;
         position:relative;
     }
     .fa{
         position: absolute;
-        right: 3%;
-        top: 5%;
-        background: black;
-        border-radius: 50%;
-        height: 50px;
-        width: 50px;
+        right: 1%;
+        top: 2%;
         z-index: 2;
     }
     .favorited{
