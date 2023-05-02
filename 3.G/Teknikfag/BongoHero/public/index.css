@@ -97,8 +97,44 @@ header{
 #page3{
     background-image: url(./assets/background.gif);
     background-size: cover;
+    position: relative;
 }
 
 .trapezoid{
     background-color: aliceblue;
+}
+
+.scoreholder{
+    display: grid;
+    place-items: center;
+    width: 100vw;
+    height: 10vh;
+    font-size: 4rem;
+    grid-template-columns: 1fr 1fr;
+    z-index: 10;
+    position: absolute;
+    top: 0;
+}
+
+.playerScoreCard{
+    color: white;
+    background-color: darkslategrey;
+    display: grid;
+    place-items: center;
+    border-radius: 3rem;
+    border: black 2px solid;
+    width: 10rem;
+    font-size: large;
+    padding: 0.5rem;
+    margin-top: 1rem;
+}
+
+.playerScoreCard p{
+    border-bottom: white 2px solid;
+    font-family: bongoHero;
+}
+
+.playerScore{
+    font-family: bongoHero;
+    font-size: xx-large;
 }

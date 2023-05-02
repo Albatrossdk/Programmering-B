@@ -3,12 +3,14 @@ let friction = .75
 let moveSpeed = 3
 let velocityX = 0
 let velocityY = 0
-let rectH, rectW, rectX, rectY
+let rectH, rectW, rect1X, rect2X, rect3X, rect1Y, rect2Y, rect3Y
 let rectSpeed = 8
 let score = 0
 let gameStatus = true
 let bullets = []
 let face
+let presscounter = 0
+let once = true
 
 let clientSocket
 
@@ -17,17 +19,22 @@ function preload(){
 }
 
 function setup(){
+    frameRate(30)
     createCanvas(windowWidth, windowHeight)
     
     background('lightblue')
 
-    diameter = 120
+    diameter = 90
     x = windowWidth/2
     y = windowHeight*0.8
-    rectH = 60
-    rectW = 60
-    rectX = Math.random()*(windowWidth - rectW)
-    rectY = 0
+    rectH = 50
+    rectW = 50
+    rect1X = Math.random()*(windowWidth - rectW)
+    rect2X = Math.random()*(windowWidth - rectW)
+    rect3X = Math.random()*(windowWidth - rectW)
+    rect1Y = 0
+    rect2Y = -100
+    rect3Y = -200
 
 
     clientSocket = io.connect()
@@ -50,14 +57,23 @@ function setup(){
         if(data == "SHOOT"){
             let b = new Bullet(x, y);
             bullets.push(b);
-    
+        }
+        if(data == "PRESS"){
+            presscounter++
+        }
+
+        if(presscounter == 3){
+            diameter = 20
+            presscounter = 0
+            setTimeout(() => {
+                diameter = 90
+            }, 5000);
         }
     })
 
 }
 
 function draw(){
-
     if(gameStatus){
         background('lightblue')
         update()
@@ -78,21 +94,34 @@ function draw(){
 }
 
 function showRect(){
-    rect(rectX, rectY, rectW, rectH)
+    rect(rect1X, rect1Y, rectW, rectH)
+    rect(rect2X, rect2Y, rectW, rectH)
+    rect(rect3X, rect3Y, rectW, rectH)
 }
 
 function updateRect(){
-    rectY += rectSpeed 
-    if(rectY >= windowHeight){
-        rectY = 0
-        rectX = Math.random() * (windowWidth - rectW)
+
+    rect1Y += rectSpeed 
+    rect2Y += rectSpeed 
+    rect3Y += rectSpeed 
+    if(rect1Y >= windowHeight){
+        rect1Y = 0
+        rect1X = Math.random() * (windowWidth - rectW)
+    }
+    if(rect2Y >= windowHeight){
+        rect2Y = 0
+        rect2X = Math.random() * (windowWidth - rectW)
+    }
+    if(rect3Y >= windowHeight){
+        rect3Y = 0
+        rect3X = Math.random() * (windowWidth - rectW)
     }
 }
 
 function show(){
     ellipseMode(CENTER)
     imageMode(CENTER)
-    image(face, x, y)
+    image(face, x, y, diameter, diameter*1.325)
     // ellipse(x, y, diameter)
 }
 
@@ -145,21 +174,48 @@ function update(){
           break;
         }
 
-        if((bullets[j].x + bullets[j].r > rectX && bullets[j].x - bullets[j].r < rectX + rectW)&&(bullets[j].y + bullets[j].r > rectY && bullets[j].y - bullets[j].r < rectY+rectH)){
-            rectY = -rectH
-            rectX = Math.random() * (windowWidth - rectW)
+        if((bullets[j].x + bullets[j].r > rect1X && bullets[j].x - bullets[j].r < rect1X + rectW)&&(bullets[j].y + bullets[j].r > rect1Y && bullets[j].y - bullets[j].r < rect1Y+rectH)){
+            rect1Y = -rectH
+            rect1X = Math.random() * (windowWidth - rectW)
+            rectSpeed = rectSpeed + 0.33
+        }
+        if((bullets[j].x + bullets[j].r > rect2X && bullets[j].x - bullets[j].r < rect2X + rectW)&&(bullets[j].y + bullets[j].r > rect2Y && bullets[j].y - bullets[j].r < rect2Y+rectH)){
+            rect2Y = -rectH
+            rect2X = Math.random() * (windowWidth - rectW)
+            rectSpeed = rectSpeed + 0.33
+        }
+        if((bullets[j].x + bullets[j].r > rect3X && bullets[j].x - bullets[j].r < rect3X + rectW)&&(bullets[j].y + bullets[j].r > rect3Y && bullets[j].y - bullets[j].r < rect3Y+rectH)){
+            rect3Y = -rectH
+            rect3X = Math.random() * (windowWidth - rectW)
+            rectSpeed = rectSpeed + 0.33
         }
 }}
 
 function collission(){
-    if((x + diameter/2 > rectX && x - diameter/2 < rectX + rectW)&&(y + diameter/2 > rectY && y - diameter/2 < rectY+rectH)){
+    if((x + diameter/2 > rect1X && x - diameter/2 < rect1X + rectW)&&(y + diameter/2 > rect1Y && y - diameter/2 < rect1Y+rectH)){
             
-         gameStatus = false
-         select('#score').html('Score: ' + Math.round(score))   
-         select('#deathMessage').html('You lost')   
-         select('#refresh').html('Press R to try again!')   
-        
-    }
+        gameStatus = false
+        select('#score').html('Score: ' + Math.round(score))   
+        select('#deathMessage').html('You lost')   
+        select('#refresh').html('Press R to try again!')   
+       
+   }
+   if((x + diameter/2 > rect2X && x - diameter/2 < rect2X + rectW)&&(y + diameter/2 > rect2Y && y - diameter/2 < rect2Y+rectH)){
+           
+        gameStatus = false
+        select('#score').html('Score: ' + Math.round(score))   
+        select('#deathMessage').html('You lost')   
+        select('#refresh').html('Press R to try again!')   
+       
+   }
+   if((x + diameter/2 > rect3X && x - diameter/2 < rect3X + rectW)&&(y + diameter/2 > rect3Y && y - diameter/2 < rect3Y+rectH)){
+           
+        gameStatus = false
+        select('#score').html('Score: ' + Math.round(score))   
+        select('#deathMessage').html('You lost')   
+        select('#refresh').html('Press R to try again!')   
+       
+   }
 }
 
 

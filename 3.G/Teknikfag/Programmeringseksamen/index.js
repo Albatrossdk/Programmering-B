@@ -2,6 +2,7 @@ console.log('Node script now running')
 //hent biblioteket ip
 const ip = require('ip')
 console.log(ip.address())
+let ipadr = ip.address()
 //hent biblioteket express og gem objektet i en konstant
 const express = require('express')
 //initaliser app objektet
@@ -39,7 +40,7 @@ const udpserver = dgram.createSocket('udp4');
 const udpPORT = 3000;
 const udpHOST = '10.146.126.11';
 
-udpserver.bind(udpPORT, udpHOST);
+udpserver.bind(udpPORT, ipadr);
 
 
 udpserver.on('message', (msg, rinfo) => {

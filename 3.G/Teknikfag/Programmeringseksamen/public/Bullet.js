@@ -3,7 +3,7 @@ class Bullet{
         this.x = x_;
         this.y = y_;
         this.speed = -10;
-        this.r = 10;
+        this.r = 20;
     }
 
     display() {
