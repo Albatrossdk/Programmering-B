@@ -10,7 +10,7 @@
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.min.js" integrity="sha512-3RlxD1bW34eFKPwj9gUXEWtdSMC59QqIqHnD8O/NoTwSJhgxRizdcFVQhUMFyTp5RwLTDL0Lbcqtl8b7bFAzog==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/addons/p5.sound.js" integrity="sha512-TU9AWtV5uUZPX8dbBAH8NQF1tSdigPRRT82vllAQ1Ke28puiqLA6ZVKxtUGlgrH6yWFnkKy+sE6luNEGH9ar0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mqtt/4.3.7/mqtt.min.js" integrity="sha512-tc5xpAPaQDl/Uxd7ZVbV66v94Lys0IefMJSdlABPuzyCv0IXmr9TkqEQvZiWKRoXMSlP5YPRwpq2a+v5q2uzMg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 <body>
     <header>
@@ -24,36 +24,65 @@
             <div id="title">BONGO HERO</div>
             <div id="andreasmor">
                 <h1>PRESS THE START BUTTON</h1>
-                <h2>Are you ready to become a bongo hero!?</h2>
-            </div>
-            <div class="pil">
-                <img src="./assets/pil.png" alt="">
+                <h2>Are you ready to become a bongo hero?</h2>
             </div>
         </div>
         <div class="page" id="page2">
-            <div class="gamemode" id="classic">
-                <h3>Classic</h3>
-                <img src="./assets/pil.png" alt="">
+            <div class="chooseGamemodeContainer">
+                <img src="./assets/diddykong.gif" class="diddyKong" alt="">
+                <h1>CHOOSE GAMEMODE</h1>
+                <img src="./assets/diddykong.gif" class="diddyKong" alt="">
             </div>
-            <div class="gamemode" id="versus">
-                <h3>Versus</h3>
-                <img src="./assets/pil.png" alt="">
+            <div class="gamemodeContainer">
+                <div class="gamemode" id="classic">
+                    <h3>Classic</h3>
+                </div>
+                <div class="gamemode" id="versus">
+                    <h3>Versus</h3>
+                </div>
             </div>
         </div>
         <div class="page" id="page3">
+            <div id="gameOverHolder">
+                <p id="gameOver"></p>
+            </div>
             <div class="scoreholder">
                 <div class="playerScoreCard">
                     <p>Player 1</p>
                     <div class="playerScore" id="player1Score">0</div>
+                    <div id="player1Animation1" class="playerAnimation"><img src="./assets/bongo_ok.png" alt=""></div>
+                    <div id="player1Animation2" class="playerAnimation"><img src="./assets/bongo_good.png" alt=""></div>
+                    <div id="player1Animation5" class="playerAnimation"><img src="./assets/bongo_perfektus.png" alt=""></div>
+                    <div id="player1Animation-1" class="playerAnimation miss"><img src="./assets/bongo_miss.png" alt=""></div>
                 </div>
                 <div class="playerScoreCard">
                     <p>Player 2</p>
                     <div class="playerScore" id="player2Score">0</div>
+                    <div id="player2Animation1" class="playerAnimation"><img src="./assets/bongo_ok.png" alt=""></div>
+                    <div id="player2Animation2" class="playerAnimation"><img src="./assets/bongo_good.png" alt=""></div>
+                    <div id="player2Animation5" class="playerAnimation"><img src="./assets/bongo_perfektus.png" alt=""></div>
+                    <div id="player2Animation-1" class="playerAnimation miss"><img src="./assets/bongo_miss.png" alt=""></div>
                 </div>
             </div>
         </div>
         <div class="page" id="page4">
+            <h1 id="playerWon">playerx</h1>
+            <h1 id="playerLost">playerx</h1>
+            <div class="scoreHolderWinScreen">
+                <div id="firstPlaceScoreboard">
+                    
+                </div>
+                <div id="secondPlaceScoreboard">
 
+                </div>
+                <div id="player1Holder" class="playerScoreCardWinScreen">
+                    <p>Player 1</p>
+                    <div class="playerScore" id="player1ScoreWinScreen">0</div>
+                </div>
+                <div id="player2Holder" class="playerScoreCardWinScreen">
+                    <p>Player 2</p>
+                    <div class="playerScore" id="player2ScoreWinScreen">0</div>
+                </div>
             </div>
         </div>
     </main>

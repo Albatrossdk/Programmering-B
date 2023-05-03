@@ -66,31 +66,65 @@ header{
 #title{
     font-family: bongoHero;
     font-size: 7rem;
+    margin-bottom: 30vh;
+    color: white;
 }
 
 #andreasmor{
     display: grid;
     place-items: center;
+    color: white;
 }
 
 #page2{
+    background: linear-gradient(90deg, rgba(245,52,22,1) 0%, rgba(245,220,47,1) 100%);
+    display: grid;
+    place-items: center;
+    grid-template-rows: 1fr 1fr;
+    background-image: url(./assets/page2.gif);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#page2 h1{
+    font-family: bongoHero;
+    font-size: 3rem;
+}
+
+.gamemodeContainer{
     display: grid;
     place-items: center;
     grid-template-columns: 1fr 1fr;
+    width: 100vw;
+}
+
+.chooseGamemodeContainer{
+    display: grid;
+    place-items: center;
+    grid-template-columns: 1fr 2fr 1fr;
+}
+
+.chooseGamemodeContainer h1{
+    font-size: 30rem;
+}
+
+.diddyKong{
+    scale: 60%;
 }
 
 .gamemode{
+    padding-bottom: 35vh;
     height: 100%;
     width: 100%;
     display: grid;
     place-items: center;
     font-family: bongoHero;
-    font-size: 3rem;
 }
 
 .gamemode h3{
     font-family: bongoHero;
-    font-size: 10rem;
+    font-size: 7rem;
     font-weight: 300;
 }
 
@@ -137,4 +171,86 @@ header{
 .playerScore{
     font-family: bongoHero;
     font-size: xx-large;
+}
+
+.playerScoreCardWinScreen{
+    border-bottom: black 2px solid;
+    font-family: bongoHero;
+    display: grid;
+    place-items: center;
+}
+
+#gameOverHolder{
+    position: absolute;
+    display: grid;
+    place-items: center;
+}
+
+#gameOver{
+    font-family: bongoHero;
+    position: relative;
+    color: red;
+    font-size: 5rem;
+}
+
+.restartButton{
+    border-radius: 1rem;
+    border: black 2px solid;
+    margin: 1rem;
+    padding: 0.5rem;
+    font-size: x-large;
+}
+
+.playerAnimation{
+    position: absolute;
+    margin-left: 10rem;
+    margin-top: 3rem;
+    transform: rotate(-30deg);
+    scale: 30%;
+    visibility: hidden;
+    transition-timing-function: ease-in-out
+}
+
+.miss{
+    scale: 20%;
+    transform: rotate(-10deg);
+    
+}
+
+#page4{
+    background-image: url('./assets/page4.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: relative;
+}
+
+.scoreHolderWinScreen{
+    position: absolute;
+    color: white;
+    left: 10vw;
+}
+
+
+#playerWon{
+    position: absolute;
+    bottom: 15vh;
+    right: 52.4vw;
+    font-size: 1.65rem;
+    transform: rotate(1deg);
+}
+
+#playerLost{
+    position: absolute;
+    bottom: 9.8vh;
+    right: 40vw;
+    font-size: 1.5rem;
+    transform: rotate(1deg);
+}
+
+#page1{
+    background-image: url(./assets/page1.gif);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
 }

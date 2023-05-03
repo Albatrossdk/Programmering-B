@@ -31,24 +31,72 @@ class Bongobullet{
         }    
     }
     checkPoint(){
-        if(this.ypos >= (this.checkPointLine - 30) && this.ypos <= (this.checkPointLine - 20)){
+        if(this.ypos >= (this.checkPointLine - 30) && this.ypos <= (this.checkPointLine - 20)||this.ypos >= (this.checkPointLine + 20) && this.ypos <= (this.checkPointLine + 30)){
             console.log("ok")
+            if(this.bongo == 0||this.bongo == 1){
+                select('#player1Animation1').style('visibility', 'visible')
+
+                select('#player1Animation2').style('visibility', 'hidden')
+                select('#player1Animation5').style('visibility', 'hidden')
+                select('#player1Animation-1').style('visibility', 'hidden')
+            }else{
+                select('#player2Animation1').style('visibility', 'visible')
+
+                select('#player2Animation2').style('visibility', 'hidden')
+                select('#player2Animation5').style('visibility', 'hidden')
+                select('#player2Animation-1').style('visibility', 'hidden')
+            }
             return [true, 1]
-        }else if(this.ypos >= (this.checkPointLine - 20) && this.ypos <= (this.checkPointLine - 5)){
+        }else if(this.ypos >= (this.checkPointLine - 20) && this.ypos <= (this.checkPointLine - 5)||this.ypos >= (this.checkPointLine + 5) && this.ypos <= (this.checkPointLine + 20)){
             console.log("good")
+            if(this.bongo == 0||this.bongo == 1){
+                select('#player1Animation2').style('visibility', 'visible')
+
+                select('#player1Animation1').style('visibility', 'hidden')
+                select('#player1Animation5').style('visibility', 'hidden')
+                select('#player1Animation-1').style('visibility', 'hidden')
+            }else{
+                select('#player2Animation2').style('visibility', 'visible')
+
+                select('#player2Animation1').style('visibility', 'hidden')
+                select('#player2Animation5').style('visibility', 'hidden')
+                select('#player2Animation-1').style('visibility', 'hidden')
+            }
             return [true, 2]
         }else if(this.ypos >= (this.checkPointLine - 5) && this.ypos <= (this.checkPointLine + 5)){
             console.log("perfect")
+            if(this.bongo == 0||this.bongo == 1){
+                select('#player1Animation5').style('visibility', 'visible')
+
+                select('#player1Animation1').style('visibility', 'hidden')
+                select('#player1Animation2').style('visibility', 'hidden')
+                select('#player1Animation-1').style('visibility', 'hidden')
+            }else{
+                select('#player2Animation5').style('visibility', 'visible')
+
+                select('#player2Animation1').style('visibility', 'hidden')
+                select('#player2Animation2').style('visibility', 'hidden')
+                select('#player2Animation-1').style('visibility', 'hidden')
+            }
             return [true, 5]
-        }else if(this.ypos >= (this.checkPointLine + 5) && this.ypos <= (this.checkPointLine + 20)){
-            console.log("good")
-            return [true, 2]
-        }else if(this.ypos >= (this.checkPointLine + 20) && this.ypos <= (this.checkPointLine + 30)){
-            console.log("ok")
-            return [true, 1]
-        }else{
+        }else if(this.ypos >= (this.checkPointLine - 60) && this.ypos <= (this.checkPointLine - 30)||this.ypos >= (this.checkPointLine + 30) && this.ypos <= (this.checkPointLine + 60)){
             console.log('you fucked up')
-            return [false, -1]
+            if(this.bongo == 0||this.bongo == 1){
+                select('#player1Animation-1').style('visibility', 'visible')
+
+                select('#player1Animation1').style('visibility', 'hidden')
+                select('#player1Animation2').style('visibility', 'hidden')
+                select('#player1Animation5').style('visibility', 'hidden')
+            }else{
+                select('#player2Animation-1').style('visibility', 'visible')
+
+                select('#player2Animation1').style('visibility', 'hidden')
+                select('#player2Animation2').style('visibility', 'hidden')
+                select('#player2Animation5').style('visibility', 'hidden')
+            }
+            return [true, -1]
+        }else{
+            return [false]
         }
     }
 }
