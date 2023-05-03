@@ -23,6 +23,7 @@ main{
     scroll-behavior: smooth;
     scroll-snap-type: x mandatory;
     background-color: whitesmoke;
+    overflow-y: hidden;
 }
 
 .page{
@@ -65,9 +66,11 @@ header{
 
 #title{
     font-family: bongoHero;
-    font-size: 7rem;
+    font-size: 8.5rem;
     margin-bottom: 30vh;
     color: white;
+    -webkit-text-stroke-width: 3px;
+    -webkit-text-stroke-color: black;
 }
 
 #andreasmor{
@@ -201,6 +204,7 @@ header{
     font-size: x-large;
 }
 
+
 .playerAnimation{
     position: absolute;
     margin-left: 10rem;
@@ -208,8 +212,8 @@ header{
     transform: rotate(-30deg);
     scale: 30%;
     visibility: hidden;
-    transition-timing-function: ease-in-out
 }
+
 
 .miss{
     scale: 20%;
@@ -253,4 +257,35 @@ header{
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
+}
+
+.restart{
+    position: absolute;
+    color: white;
+    font-size: 4rem;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    text-align: center;
+    bottom: -100vh;
+    transition: ease-in-out 1s;
+
+}
+
+.restart h1{
+    font-family: bongoHero;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
+}
+
+#restartPil{
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    text-align: center;
+    bottom: -60vh;
+    scale: 70%;
 }

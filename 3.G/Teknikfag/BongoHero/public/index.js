@@ -6,7 +6,7 @@ let speed
 const ySpeed = 5.0
 
 let beatInterval = (60 / 138) * 1000; // Calculate the interval between beats
-let songDuration = 5 * 60 * 1000 + 11 * 1000; // Convert song duration to milliseconds
+let songDuration = 1 * 60 * 1000 + 43 * 1000; // Convert song duration to milliseconds
 let beatTimes = []; // Initialize an empty array for beat times
 let currentBeat = 0; // Initialize the current beat to 0
 let fallingCircles = []; // Initialize an empty array for falling circles
@@ -51,7 +51,7 @@ let gameover
 
 function preload() {
     // Load the song
-    song = loadSound('./assets/bongo2.mp3', function() {
+    song = loadSound('./assets/bongo3.mp3', function() {
       // Calculate the beat times when the song is loaded
       for (let i = 1; i * beatInterval < song.duration() * 1000; i++) {
         if (i % 4 === 0) {
@@ -136,7 +136,6 @@ function draw(){
   // Check if it's time to create a new falling circle
   if (currentBeat < beatTimes.length && gamestart==true) {
     milliSeconds = abs(startTime - new Date().getTime())
-    console.log(milliSeconds)
     let elapsedTime = milliSeconds - beatTimes[currentBeat];
     if (elapsedTime >= beatInterval && elapsedTime < beatInterval + 100) {
       //Making player 1's bongos
@@ -188,12 +187,20 @@ function draw(){
 
   //GAME OVER FUNCTION
   if (currentBeat >= beatTimes.length) {
-    select('#gameOver').html('GAME OVER')
-    gameover = true
-    
-    /*if(player1Score=player2Score){
-      select('#playerWon').html('DRAW')
-    }*/
+    setTimeout(() => {
+      select('#gameOver').html('GAME OVER')
+      gameover = true
+      setTimeout(() => {
+        if(scrollOnce == true){
+          scrollOnce = false
+          select('main').elt.scrollTo(windowWidth*3,0)
+          setTimeout(()=>{
+            select('.restart').style('bottom','35vh')
+          }, "10000")
+        }
+      }, "3000");
+    }, "4000");
+
     if(player1Score < player2Score){
       select('#playerWon').html('PLAYER 2')
       select('#playerLost').html('PLAYER 1')
@@ -203,20 +210,13 @@ function draw(){
     }else{
       select('#playerWon').html('PLAYER 1')
       select('#playerLost').html('PLAYER 2')
-
+  
       select('#firstPlaceScoreboard').child(select('#player1Holder'))
       select('#secondPlaceScoreboard').child(select('#player2Holder'))
     }
-
+  
     select('#player1ScoreWinScreen').html(player1Score)
     select('#player2ScoreWinScreen').html(player2Score)
-    
-    setTimeout(() => {
-      if(scrollOnce == true){
-        scrollOnce = false
-        select('main').elt.scrollTo(windowWidth*3,0)
-      }
-    }, "3000");
   }
 }
 
@@ -350,23 +350,38 @@ function updateNote(){
 
 
 function drawBackground(){
-    fill("darkgray")
+    fill("rgb(255,99,0)")
+    stroke('whitesmoke')
+    strokeWeight(5)
     let trapezoid = quad(windowWidth*0.25, windowHeight*0.75, windowWidth*0.75, windowHeight*0.75, windowWidth*0.55, windowHeight*0.18, windowWidth*0.45, windowHeight*0.18);
     let trapezoid2 = quad(windowWidth*0.25, windowHeight*0.75, windowWidth*0.75, windowHeight*0.75, windowWidth*0.84, windowHeight, windowWidth*0.16, windowHeight);
 
+    stroke('black')
+    strokeWeight(2)
     //let playLine = rect(0, windowHeight*0.75, windowWidth, 10,)
     checkPointLine = windowHeight*0.75
     
     x1 = windowWidth*0.35
     y1 = windowHeight*0.75
     fill('red')
-    let bongo1 = circle(windowWidth*0.35, windowHeight*0.75, 80)
+    circle(windowWidth*0.35, windowHeight*0.75, 80)
+    fill('whitesmoke')
+    circle(windowWidth*0.35, windowHeight*0.75, 60)
+
     fill('blue')
-    let bongo2 = circle(windowWidth*0.45, windowHeight*0.75, 80)
+    circle(windowWidth*0.45, windowHeight*0.75, 80)
+    fill('whitesmoke')
+    circle(windowWidth*0.45, windowHeight*0.75, 60)
+
     fill('yellow')
-    let bongo3 = circle(windowWidth*0.55, windowHeight*0.75, 80)
+    circle(windowWidth*0.55, windowHeight*0.75, 80)
+    fill('whitesmoke')
+    circle(windowWidth*0.55, windowHeight*0.75, 60)
+    
     fill('orange')
-    let bongo4 = circle(windowWidth*0.65, windowHeight*0.75, 80)
+    circle(windowWidth*0.65, windowHeight*0.75, 80)
+    fill('whitesmoke')
+    circle(windowWidth*0.65, windowHeight*0.75, 60)
     
     //Length of top and bottom lines
     let toplength = (windowWidth*0.55) - (windowWidth*0.45)
@@ -406,7 +421,6 @@ function mqttStuff(){
       })
       
       mqttClient.on('message', (topic, message)=>{
-        //Flappy bird
         if(topic == 'Bongohero' && message == 'Start'){
           select('main').elt.scrollTo(windowWidth*1,0)
           mqttClient.publish('Bongohero','GamemodeReady')
@@ -428,6 +442,7 @@ function mqttStuff(){
           player2Score = 0
           startTime = 0
           gamestart = false
+          select('.restart').style('bottom','-100vh')
 
 
           select('main').elt.scrollTo(windowWidth*0.2,0)

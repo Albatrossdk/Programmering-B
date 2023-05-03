@@ -18,7 +18,7 @@ class Bongobullet{
     update(){
         this.ypos += this.yspeed
         this.xpos += this.xspeed
-        if(this.ypos>windowHeight+this.dia){this.hit = true}
+        if(this.ypos>windowHeight-50){this.hit = true}
 
         let yposRatio = (this.ypos - this.minY) / this.ydist;
         // Map the ypos ratio to a value between minDia and maxDia
