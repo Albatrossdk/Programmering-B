@@ -3,7 +3,7 @@ let y1
 let x2
 let y2
 let speed 
-const ySpeed = 5.0
+const ySpeed = 5
 
 let beatInterval = (60 / 138) * 1000; // Calculate the interval between beats
 let songDuration = 1 * 60 * 1000 + 43 * 1000; // Convert song duration to milliseconds
@@ -13,7 +13,7 @@ let fallingCircles = []; // Initialize an empty array for falling circles
 let circleSpeed = 5; // Set the speed for all falling circles
 
 let noteSpawns = []
-let bongoColors = ["red", "blue", "yellow", "orange"]
+let bongoColors = ["blue", "green", "yellow", "red"]
 let bongoXSpeeds = []
 let keyCodes = ["q","w","e","r"]
 
@@ -54,9 +54,9 @@ function preload() {
     song = loadSound('./assets/bongo3.mp3', function() {
       // Calculate the beat times when the song is loaded
       for (let i = 1; i * beatInterval < song.duration() * 1000; i++) {
-        if (i % 4 === 0) {
+        /*if (i % 4 === 0) {*/
           beatTimes.push(i * beatInterval);
-        }
+        /*}*/
       }
       // Start the song
       //song.play();
@@ -72,19 +72,6 @@ function setup(){
     beatLine = windowHeight*0.75
 
     //Scroll to pages
-    
-    select('#btn1').mouseClicked(()=>{
-        select('main').elt.scrollTo(windowWidth*0.2,0)
-        select('#btn1').addClass('active'); select('#btn2').removeClass('active'); select('#btn3').removeClass('active')
-    })
-    select('#btn2').mouseClicked(()=>{
-        select('main').elt.scrollTo(windowWidth*1,0)
-        select('#btn2').addClass('active'); select('#btn1').removeClass('active'); select('#btn3').removeClass('active')
-    })
-    select('#btn3').mouseClicked(()=>{
-        select('main').elt.scrollTo(windowWidth*2,0)
-        select('#btn3').addClass('active'); select('#btn2').removeClass('active'); select('#btn1').removeClass('active')
-    })
 
     select('#page3').child(canvas)
         //Setting variables for drawing the background:
@@ -190,6 +177,7 @@ function draw(){
     setTimeout(() => {
       select('#gameOver').html('GAME OVER')
       gameover = true
+      mqttClient.publish('Bongohero','RestartReady')
       setTimeout(() => {
         if(scrollOnce == true){
           scrollOnce = false
@@ -363,12 +351,12 @@ function drawBackground(){
     
     x1 = windowWidth*0.35
     y1 = windowHeight*0.75
-    fill('red')
+    fill('blue')
     circle(windowWidth*0.35, windowHeight*0.75, 80)
     fill('whitesmoke')
     circle(windowWidth*0.35, windowHeight*0.75, 60)
 
-    fill('blue')
+    fill('green')
     circle(windowWidth*0.45, windowHeight*0.75, 80)
     fill('whitesmoke')
     circle(windowWidth*0.45, windowHeight*0.75, 60)
@@ -378,7 +366,7 @@ function drawBackground(){
     fill('whitesmoke')
     circle(windowWidth*0.55, windowHeight*0.75, 60)
     
-    fill('orange')
+    fill('red')
     circle(windowWidth*0.65, windowHeight*0.75, 80)
     fill('whitesmoke')
     circle(windowWidth*0.65, windowHeight*0.75, 60)
@@ -443,6 +431,7 @@ function mqttStuff(){
           startTime = 0
           gamestart = false
           select('.restart').style('bottom','-100vh')
+          select('#gameOver').html('')
 
 
           select('main').elt.scrollTo(windowWidth*0.2,0)

@@ -34,13 +34,34 @@ main{
     scroll-snap-align: center;
 }
 
+@keyframes burning {
+    0% {
+      text-shadow: 0 0 10px rgba(255, 215, 0, 0.8), 0 0 20px rgba(255, 215, 0, 0.8), 0 0 30px rgba(255, 215, 0, 0.8), 0 0 40px rgba(255, 215, 0, 0.8), 0 0 70px rgba(255, 165, 0, 0.8), 0 0 80px rgba(255, 165, 0, 0.8), 0 0 100px rgba(255, 165, 0, 0.8);
+    }
+    100% {
+      text-shadow: 0 0 20px rgba(255, 215, 0, 0.8), 0 0 30px rgba(255, 215, 0, 0.8), 0 0 40px rgba(255, 215, 0, 0.8), 0 0 70px rgba(255, 165, 0, 0.8), 0 0 80px rgba(255, 165, 0, 0.8), 0 0 100px rgba(255, 165, 0, 0.8), 0 0 150px rgba(255, 165, 0, 0.8);
+    }
+  }
+  
+
 header{
     height: 10vh;
     width: 100vw;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    border-bottom: slategray 2px solid;
+    place-items: center;
     font-weight: 800;
+    background: rgb(255,90,0);
+    border-bottom: 3px white solid;
+}
+
+header h1{
+    font-family: bongoHero;
+    font-size: 4.5rem;
+    color: white;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
+    animation: burning 0.2s ease-in-out infinite alternate;
+    
 }
 
 .button{
@@ -73,10 +94,32 @@ header{
     -webkit-text-stroke-color: black;
 }
 
+@keyframes textFlash{
+    0% {
+      visibility: hidden;
+    }
+    100% {
+        visibility: visible;
+    }
+  }
+
 #andreasmor{
     display: grid;
     place-items: center;
     color: white;
+    margin-bottom: 15vh;
+    animation: textFlash 1s ease-in-out infinite;
+}
+
+#andreasmor h1{
+    font-size: 6rem;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
+}
+#andreasmor h2{
+    font-size: 4rem;
+    -webkit-text-stroke-width: 0.5px;
+    -webkit-text-stroke-color: black;
 }
 
 #page2{
@@ -109,7 +152,7 @@ header{
 }
 
 .chooseGamemodeContainer h1{
-    font-size: 30rem;
+    font-size: 50rem;
 }
 
 .diddyKong{
@@ -119,8 +162,9 @@ header{
 .gamemode{
     padding-bottom: 35vh;
     height: 100%;
-    width: 100%;
+    width: 27vw;
     display: grid;
+    grid-template-columns: 1fr 1fr;
     place-items: center;
     font-family: bongoHero;
 }
@@ -160,7 +204,7 @@ header{
     place-items: center;
     border-radius: 3rem;
     border: black 2px solid;
-    width: 10rem;
+    width: 15rem;
     font-size: large;
     padding: 0.5rem;
     margin-top: 1rem;
@@ -169,6 +213,7 @@ header{
 .playerScoreCard p{
     border-bottom: white 2px solid;
     font-family: bongoHero;
+    font-size: 3rem;
 }
 
 .playerScore{
@@ -223,9 +268,8 @@ header{
 
 #page4{
     background-image: url('./assets/page4.png');
-    background-position: center;
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: cover;
     position: relative;
 }
 
@@ -238,25 +282,24 @@ header{
 
 #playerWon{
     position: absolute;
-    bottom: 15vh;
-    right: 52.4vw;
-    font-size: 1.65rem;
+    bottom: 15.5vh;
+    right: 53.8vw;
+    font-size: 1.75rem;
     transform: rotate(1deg);
 }
 
 #playerLost{
     position: absolute;
-    bottom: 9.8vh;
-    right: 40vw;
+    bottom: 10.3vh;
+    right: 37.5vw;
     font-size: 1.5rem;
     transform: rotate(1deg);
 }
 
 #page1{
     background-image: url(./assets/page1.gif);
-    background-position: center;
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: cover;
 }
 
 .restart{
