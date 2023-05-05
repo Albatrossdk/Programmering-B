@@ -41,7 +41,7 @@ let bongo4NoteSpawn
 
 let scrollOnce = true
 
-let gamemode = versus
+let gamemode
 let gamestart = false
 
 let milliSeconds
@@ -64,6 +64,8 @@ function preload() {
   }
 
 function setup(){
+    select('#highscore').html(localStorage.getItem('highscore'))
+
     console.log(beatTimes)
 
     let canvas = createCanvas(windowWidth, windowHeight)
@@ -112,6 +114,7 @@ function draw(){
 
   select('#player1Score').html(player1Score)
   select('#player2Score').html(player2Score)
+  select('#singlePlayerScore').html(player1Score+player2Score)
   
   
   // Draw the falling circles and check if they hit the line at the right time
@@ -125,35 +128,58 @@ function draw(){
     milliSeconds = abs(startTime - new Date().getTime())
     let elapsedTime = milliSeconds - beatTimes[currentBeat];
     if (elapsedTime >= beatInterval && elapsedTime < beatInterval + 100) {
-      //Making player 1's bongos
-      let bongonumber1 = floor(random(0,2))
-      fallingCircles.push(new Bongobullet(
-        bongonumber1, 
-        noteSpawns[bongonumber1], 
-        spawnLine, 
-        20, 
-        bongoColors[bongonumber1], 
-        bongoXSpeeds[bongonumber1], 
-        ySpeed, 
-        currentBeat,
-        checkPointLine,
-        minY, maxY, ydist
-          ))    
-          //Making player 2's bongos
-          let bongonumber2 = floor(random(2,4))
-      fallingCircles.push(new Bongobullet(
-        bongonumber2, 
-        noteSpawns[bongonumber2], 
-        spawnLine, 
-        20, 
-        bongoColors[bongonumber2], 
-        bongoXSpeeds[bongonumber2], 
+      console.log(gamemode)
+      if(gamemode == "versus"){
+        //Making player 1's bongos
+        let bongonumber1 = floor(random(0,2))
+        fallingCircles.push(new Bongobullet(
+          bongonumber1, 
+          noteSpawns[bongonumber1], 
+          spawnLine, 
+          20, 
+          bongoColors[bongonumber1], 
+          bongoXSpeeds[bongonumber1], 
           ySpeed, 
           currentBeat,
           checkPointLine,
-          minY, maxY, ydist
-          ))
-        }
+          minY, maxY, ydist,
+          gamemode
+            ))    
+        //Making player 2's bongos
+        let bongonumber2 = floor(random(2,4))
+        fallingCircles.push(new Bongobullet(
+          bongonumber2, 
+          noteSpawns[bongonumber2], 
+          spawnLine, 
+          20, 
+          bongoColors[bongonumber2], 
+          bongoXSpeeds[bongonumber2], 
+            ySpeed, 
+            currentBeat,
+            checkPointLine,
+            minY, maxY, ydist,
+            gamemode
+            ))
+          }
+        if(gamemode == "classic"){
+        //Making player 2's bongos
+        let bongonumber2 = floor(random(0,4))
+        fallingCircles.push(new Bongobullet(
+          bongonumber2, 
+          noteSpawns[bongonumber2], 
+          spawnLine, 
+          20, 
+          bongoColors[bongonumber2], 
+          bongoXSpeeds[bongonumber2], 
+            ySpeed, 
+            currentBeat,
+            checkPointLine,
+            minY, maxY, ydist,
+            gamemode
+            ))
+          }
+
+      }
         if (elapsedTime >= beatInterval) {
           currentBeat++;
         }
@@ -202,9 +228,17 @@ function draw(){
       select('#firstPlaceScoreboard').child(select('#player1Holder'))
       select('#secondPlaceScoreboard').child(select('#player2Holder'))
     }
-  
+    
     select('#player1ScoreWinScreen').html(player1Score)
     select('#player2ScoreWinScreen').html(player2Score)
+    select('#singlePlayerScoreWinScreen').html(player1Score+player2Score)
+    if(player1Score+player2Score > localStorage.getItem('highscore')){
+      select('#yourScoreh1').html('NEW HIGHSCORE')
+      select('#highscore').html(player1Score+player2Score)
+      localStorage.setItem('highscore', player1Score+player2Score)
+    }else{
+      select('#yourScoreh1').html('YOUR SCORE')
+    }
   }
 }
 
@@ -416,9 +450,34 @@ function mqttStuff(){
         if(topic == 'BongoheroGamemode'){
           select('main').elt.scrollTo(windowWidth*2,0)
           console.log('Scotty doenst know')
-          gamemode = message
+          gamemode = message.toString()
           gamestart = true
           startTime = new Date().getTime()
+
+          if(gamemode == "versus"){
+            select('#multiPlayerScoreCard1').style('visibility', 'visible')
+            select('#multiPlayerScoreCard2').style('visibility', 'visible')
+            select('#singlePlayerScoreCard').style('visibility', 'hidden')
+            
+            select('.multiPlayerScoreHolderWinScreen').style('visibility', 'visible')
+            select('.singlePlayerScoreHolderWinScreen').style('visibility', 'hidden')
+
+            select('#playerWon').style('visibility', 'visible')
+            select('#playerLost').style('visibility', 'visible')
+            select('#page4').style('background-image',"url('./assets/page4.png')")
+          }else if(gamemode == "classic"){
+            select('#multiPlayerScoreCard1').style('visibility', 'hidden')
+            select('#multiPlayerScoreCard2').style('visibility', 'hidden')
+            select('#singlePlayerScoreCard').style('visibility', 'visible')
+            
+            select('.multiPlayerScoreHolderWinScreen').style('visibility', 'hidden')
+            select('.singlePlayerScoreHolderWinScreen').style('visibility', 'visible')
+
+            select('#playerWon').style('visibility', 'hidden')
+            select('#playerLost').style('visibility', 'hidden')
+            select('#page4').style('background-image',"url('./assets/page4singleplayer.jpeg')")
+          }
+
           // Start the song
           song.play();  
           mqttClient.publish('Bongohero','GamemodeChosen')

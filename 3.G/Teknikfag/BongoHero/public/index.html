@@ -23,9 +23,9 @@
             <div id="title">BONGO HERO</div>
             <div id="andreasmor">
                 <h1>PRESS THE START BUTTON</h1>
-                <h2>Are you ready to become a bongo hero?</h2>
             </div>
         </div>
+
         <div class="page" id="page2">
             <div class="chooseGamemodeContainer">
                 <img src="./assets/diddykong.gif" class="diddyKong" alt="">
@@ -43,12 +43,13 @@
                 </div>
             </div>
         </div>
+
         <div class="page" id="page3">
             <div id="gameOverHolder">
                 <p id="gameOver"></p>
             </div>
             <div class="scoreholder">
-                <div class="playerScoreCard">
+                <div class="playerScoreCard" id="multiPlayerScoreCard1">
                     <p>Player 1</p>
                     <div class="playerScore" id="player1Score">0</div>
                     <div id="player1Animation1" class="playerAnimation"><img src="./assets/bongo_ok.png" alt=""></div>
@@ -56,7 +57,15 @@
                     <div id="player1Animation5" class="playerAnimation"><img src="./assets/bongo_perfektus.png" alt=""></div>
                     <div id="player1Animation-1" class="playerAnimation miss"><img src="./assets/bongo_miss.png" alt=""></div>
                 </div>
-                <div class="playerScoreCard">
+                <div class="playerScoreCard" id="singlePlayerScoreCard">
+                    <p>Your Score</p>
+                    <div class="playerScore" id="singlePlayerScore">0</div>
+                    <div id="player1Animation1" class="playerAnimation"><img src="./assets/bongo_ok.png" alt=""></div>
+                    <div id="player1Animation2" class="playerAnimation"><img src="./assets/bongo_good.png" alt=""></div>
+                    <div id="player1Animation5" class="playerAnimation"><img src="./assets/bongo_perfektus.png" alt=""></div>
+                    <div id="player1Animation-1" class="playerAnimation miss"><img src="./assets/bongo_miss.png" alt=""></div>
+                </div>
+                <div class="playerScoreCard" id="multiPlayerScoreCard2">
                     <p>Player 2</p>
                     <div class="playerScore" id="player2Score">0</div>
                     <div id="player2Animation1" class="playerAnimation"><img src="./assets/bongo_ok.png" alt=""></div>
@@ -65,25 +74,66 @@
                     <div id="player2Animation-1" class="playerAnimation miss"><img src="./assets/bongo_miss.png" alt=""></div>
                 </div>
             </div>
+
+            <div class="animationHolder">
+                <div id="bongo1AnimationHolder" class="bongoAnimationHolder">
+                    <div id="bongo1Animation1" class="bongoAnimation ok2"><img src="./assets/bongo_ok.png" alt=""></div>
+                    <div id="bongo1Animation2" class="bongoAnimation good2"><img src="./assets/bongo_good.png" alt=""></div>
+                    <div id="bongo1Animation5" class="bongoAnimation perfect2"><img src="./assets/bongo_perfektus.png" alt=""></div>
+                    <div id="bongo1Animation-1" class="bongoAnimation miss2"><img src="./assets/bongo_miss.png" alt=""></div>
+                </div>
+
+                <div id="bongo2AnimationHolder" class="bongoAnimationHolder">
+                    <div id="bongo2Animation1" class="bongoAnimation ok2"><img src="./assets/bongo_ok.png" alt=""></div>
+                    <div id="bongo2Animation2" class="bongoAnimation good2"><img src="./assets/bongo_good.png" alt=""></div>
+                    <div id="bongo2Animation5" class="bongoAnimation perfect2"><img src="./assets/bongo_perfektus.png" alt=""></div>
+                    <div id="bongo2Animation-1" class="bongoAnimation miss2"><img src="./assets/bongo_miss.png" alt=""></div>
+                </div>
+
+                <div class="emptyspace"></div>
+
+                <div id="bongo3AnimationHolder" class="bongoAnimationHolder">
+                    <div id="bongo3Animation1" class="bongoAnimation2 ok2"><img src="./assets/bongo_ok.png" alt=""></div>
+                    <div id="bongo3Animation2" class="bongoAnimation2 good2"><img src="./assets/bongo_good.png" alt=""></div>
+                    <div id="bongo3Animation5" class="bongoAnimation2 perfect2"><img src="./assets/bongo_perfektus.png" alt=""></div>
+                    <div id="bongo3Animation-1" class="bongoAnimation2 miss2"><img src="./assets/bongo_miss.png" alt=""></div>
+                </div>
+
+                <div id="bongo4AnimationHolder" class="bongoAnimationHolder">                    
+                    <div id="bongo4Animation1" class="bongoAnimation2 ok2"><img src="./assets/bongo_ok.png" alt=""></div>
+                    <div id="bongo4Animation2" class="bongoAnimation2 good2"><img src="./assets/bongo_good.png" alt=""></div>
+                    <div id="bongo4Animation5" class="bongoAnimation2 perfect2"><img src="./assets/bongo_perfektus.png" alt=""></div>
+                    <div id="bongo4Animation-1" class="bongoAnimation2 miss2"><img src="./assets/bongo_miss.png" alt=""></div>
+                </div>
+
+            </div>
         </div>
+
         <div class="page" id="page4">
             <h1 id="playerWon">player x</h1>
             <h1 id="playerLost">player x</h1>
             <div class="scoreHolderWinScreen">
-                <div id="firstPlaceScoreboard">
-                    
+                <div class="multiPlayerScoreHolderWinScreen">
+                    <div id="firstPlaceScoreboard"></div>
+                    <div id="secondPlaceScoreboard"></div>
+                    <div id="player1Holder" class="playerScoreCardWinScreen">
+                        <p>Player 1</p>
+                        <div class="playerScore" id="player1ScoreWinScreen">0</div>
+                    </div>
+                    <div id="player2Holder" class="playerScoreCardWinScreen">
+                        <p>Player 2</p>
+                        <div class="playerScore" id="player2ScoreWinScreen">0</div>
+                    </div>
                 </div>
-                <div id="secondPlaceScoreboard">
 
+                <div class="singlePlayerScoreHolderWinScreen">
+                    <h1>HIGHSCORE</h1>
+                    <h2 id="highscore">763</h2>
                 </div>
-                <div id="player1Holder" class="playerScoreCardWinScreen">
-                    <p>Player 1</p>
-                    <div class="playerScore" id="player1ScoreWinScreen">0</div>
-                </div>
-                <div id="player2Holder" class="playerScoreCardWinScreen">
-                    <p>Player 2</p>
-                    <div class="playerScore" id="player2ScoreWinScreen">0</div>
-                </div>
+            </div>
+            <div class="yourScore">
+                <h1 id="yourScoreh1">YOUR SCORE</h1>
+                <h2 id="singlePlayerScoreWinScreen">0</h2>
             </div>
             <div class="restart">
                 <h1>RESTART</h1>
