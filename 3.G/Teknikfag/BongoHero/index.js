@@ -15,10 +15,12 @@ const port = 666
 const server = app.listen(port, ()=>{
     console.log('Server lytter på port: ' + port)
 })
-// opret en server websocket
+app.use('/', express.static('public'))
+
+
+//Opret en server websocket
 const socketLib = require('socket.io')
 const serverSocket = socketLib(server)
-app.use('/', express.static('public'))
 
 serverSocket.sockets.on('connection', socket => {
     console.log('new socket connection established')
@@ -26,7 +28,6 @@ serverSocket.sockets.on('connection', socket => {
 
 
 //UDP PROTOCOL:
-
 const dgram = require('dgram');
 const udpserver = dgram.createSocket('udp4');
 

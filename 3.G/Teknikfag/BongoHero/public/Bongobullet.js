@@ -35,6 +35,8 @@ class Bongobullet{
         if(this.ypos >= (this.checkPointLine - 30) && this.ypos <= (this.checkPointLine - 20)||this.ypos >= (this.checkPointLine + 20) && this.ypos <= (this.checkPointLine + 30)){
             console.log("ok")
             if(this.gamemode == "versus"){
+                
+
                 if(this.bongo == 0){
                     select('#bongo1Animation1').style('visibility', 'visible')
                     

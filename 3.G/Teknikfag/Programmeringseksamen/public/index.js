@@ -12,7 +12,7 @@ let face
 let presscounter = 0
 let once = true
 
-let clientSocket
+
 
 function preload(){
     face = loadImage('assets/face.png')
@@ -36,13 +36,15 @@ function setup(){
     rect2Y = -100
     rect3Y = -200
 
-
+    //Opret variabel clientsocket
+    let clientSocket
+    //Sæt variabel lig med en socket, med socket.io biblioteket
     clientSocket = io.connect()
-
+    //Asynkron eventbaseret kode udføres når beskeder modtages
     clientSocket.on('movement', data => {      
-        console.log(data)      
-        //Movement controls
+        //Movement controls, med if statements (betingelser)
         if(data == "LEFT"){
+            //P5JS variabler ændres
             velocityX = velocityX - moveSpeed
         }
         if(data == "RIGHT"){

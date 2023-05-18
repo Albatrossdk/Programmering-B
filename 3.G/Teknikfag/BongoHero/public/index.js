@@ -117,21 +117,26 @@ function draw(){
   select('#singlePlayerScore').html(player1Score+player2Score)
   
   
-  // Draw the falling circles and check if they hit the line at the right time
+  // Draw and update the falling circles
   for (let i = 0; i < fallingCircles.length; i++) {
     fallingCircles[i].update()
     fallingCircles[i].show()
   }
   
+
   // Check if it's time to create a new falling circle
   if (currentBeat < beatTimes.length && gamestart==true) {
+    //Få tiden siden spillet, startede til nu i millisekunder
     milliSeconds = abs(startTime - new Date().getTime())
+    //Trækker tiden fra da spillet startede fra det tidspunkt hvor der skal spawnes en node.
     let elapsedTime = milliSeconds - beatTimes[currentBeat];
+    //Udfør kode i takt, når beats skal spawne, men stop når sangen er færdig.
     if (elapsedTime >= beatInterval && elapsedTime < beatInterval + 100) {
       console.log(gamemode)
       if(gamemode == "versus"){
-        //Making player 1's bongos
+        //Vælg tilfædligt nummer mellem 0 og 2
         let bongonumber1 = floor(random(0,2))
+        //Lav en ny Bongobullet objekt, og skub den ind i et Array.
         fallingCircles.push(new Bongobullet(
           bongonumber1, 
           noteSpawns[bongonumber1], 
@@ -447,6 +452,7 @@ function mqttStuff(){
           select('main').elt.scrollTo(windowWidth*1,0)
           mqttClient.publish('Bongohero','GamemodeReady')
         }
+        
         if(topic == 'BongoheroGamemode'){
           select('main').elt.scrollTo(windowWidth*2,0)
           console.log('Scotty doenst know')
@@ -491,8 +497,6 @@ function mqttStuff(){
           gamestart = false
           select('.restart').style('bottom','-100vh')
           select('#gameOver').html('')
-
-
           select('main').elt.scrollTo(windowWidth*0.2,0)
           mqttClient.publish('Bongohero','StartReady')
         }
